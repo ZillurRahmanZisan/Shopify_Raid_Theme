@@ -9,7 +9,7 @@
 
   {% when "imageSection" %}
     <div class="imageSection-{{ block.id }}">
-      <img class="imageSection-{{ block.id }}-width-{{ block.settings.image-block-width }}" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+      <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
     </div>
 
   {% when "textForShow" %}
@@ -67,26 +67,14 @@
   }
 
   {% when "imageSection" %}
-    .imageSection-{{ block.id }}-width-small{
+    .imageSection-{{ block.id }}-width{
       max-width:1140px;
       width: {{block.settings.width}}px;
-      object-fit:{{block.settings.align_image}}
+      object-fit:{{block.settings.align_image}};
+  margin:auto;
+  height:{{block.settings.height}}px;
     }
-    .imageSection-{{ block.id }}-width-medium{
-      max-width:1140px;
-      width: {{block.settings.width}}px;
-      object-fit:{{block.settings.align_image}}
-    }
-  .imageSection-{{ block.id }}-width-large{
-      max-width:100%;
-      width: {{block.settings.width}}px;
-      object-fit:{{block.settings.align_image}}
-    }
-  .imageSection-{{ block.id }}-width-custom{
-      max-width:{{block.settings.custom-block-width | append: "px"}};;
-      width: {{block.settings.width}}px;
-      object-fit:{{block.settings.align_image}}
-    }
+    
 
   {% endcase %}
 
@@ -262,43 +250,29 @@
                 "label":"None"
               }]},
           {
-          "type": "select",
-            "id":"image-block-width",
-            "label":"Width of Image BLock",
-            "options":[
-              {
-                "value":"small",
-                "label":"Small"
-              },
-              {
-                "value":"medium",
-                "label":"Medium"
-              },
-              {
-                "value":"large",
-                "label":"Large"
-              },
-              {
-                "value":"custom",
-                "label":"Custom"
-              }
-            ],
-            "default": "medium"
-          },
-           {
           "type": "range",
-            "id":"custom-block-width",
-            "label":"Change your block Width",
-            "min": 100,
+            "id":"width",
+            "label":"Image Width",
+            "min": 200,
             "max": 2000,
-            "step": 50,
+            "step": 100,
             "unit": "px",
             "default": 800
           },
           {
           "type": "range",
-            "id":"width",
-            "label":"Image Width",
+            "id":"height",
+            "label":"Image Height",
+            "min": 200,
+            "max": 2000,
+            "step": 100,
+            "unit": "px",
+            "default": 800
+          },
+          {
+          "type": "range",
+            "id":"margin",
+            "label":"Margin",
             "min": 200,
             "max": 2000,
             "step": 100,
