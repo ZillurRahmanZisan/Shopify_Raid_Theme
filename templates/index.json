@@ -330,7 +330,15 @@
         "a5a77dab-9b9d-49ac-a833-d0250222325e": {
           "type": "headLine",
           "settings": {
-            "headLine": "<p>404- Not Found<\/p>"
+            "headLine": "<p>404- Not Found<\/p>",
+            "font-size": 16,
+            "mobile-font-size": 10,
+            "line-height": 16,
+            "mobile-line-height": 16,
+            "text-color": "#000000",
+            "block-width": "medium",
+            "custom-block-width": 800,
+            "align_text": "left"
           }
         },
         "e24db15e-40d5-4f1a-937f-b57231dd7dce": {
