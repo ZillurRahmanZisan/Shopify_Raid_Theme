@@ -24,6 +24,53 @@
   {% endfor %}
 </section>
 
+<style>
+{% for block in section.blocks %}
+
+  {% case block.type %}
+    {% when "headLine" %}
+  .headLine-{{ block.id }}-width-small{
+    max-width: 576px;
+    margin:0 auto;
+  }
+  .headLine-{{ block.id }}-width-medium{
+    max-width: 1140px;
+    margin:0 auto;
+  }
+  .headLine-{{ block.id }}-width-large{
+    max-width: 100%;
+  }
+  .headLine-{{ block.id }}-width-custom{
+    max-width: {{block.settings.custom-block-width | append: "px"}};
+    margin:0 auto;
+  }
+  .headLine-{{ block.id }}-width-large p{
+    padding: 0 32px;
+  }
+
+  .section-wrapper-{{ section.id }} .headLine-{{ block.id }} p{
+    font-size:{{block.settings.font-size | append:px}};
+    font-family: {{block.settings.font-family}};
+    line-height: {{block.settings.line-height}}px;
+    color: {{block.settings.text-color}};
+  }
+
+  .section-wrapper-{{ section.id }} .headLine-{{ block.id }}{
+    text-align:{{block.settings.align_text}};
+  }
+
+  @media only screen and (max-width: 760px){
+    font-size:{{block.settings.mobile-font-size | append:px}};
+    font-family: {{block.settings.mobile-font-family}};
+    line-height: {{block.settings.mobile-line-height}}px;
+    color: {{block.settings.mobile-text-color}};
+  }
+
+  {% endcase %}
+
+  {% endfor %}
+  
+</style>
 
 
 {% schema %}
@@ -81,13 +128,24 @@
           },
           {
           "type": "font",
-            "id":"font",
+            "id":"font-family",
             "label":"Font Family"
           },
           {
           "type": "color",
             "id":"text-color",
             "label":"Text Color",
+            "default": "#000000"
+          },
+          {
+          "type": "font",
+            "id":"mobile-font-family",
+            "label":"Font Family For Mobile"
+          },
+          {
+          "type": "color",
+            "id":"mobile-text-color",
+            "label":"Text Color For Mobile",
             "default": "#000000"
           },
           {
@@ -104,8 +162,8 @@
                 "label":"Medium"
               },
               {
-                "value":"full",
-                "label":"Full"
+                "value":"large",
+                "label":"Large"
               },
               {
                 "value":"custom",
