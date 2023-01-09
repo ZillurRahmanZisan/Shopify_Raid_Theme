@@ -14,9 +14,9 @@
 
   {% when "textForShow" %}
     <div>
-      <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowFirstLine }}</p>
-      <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowSecondLine }} 
-        <a class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}" href="{{ block.settings.textForShow-anchor }}">{{ block.settings.textForShow-anchorText }}</a>
+      <p class="textForShow-{{ block.id }}-firstLine">{{ block.settings.textForShowFirstLine }}</p>
+      <p class="textForShow-{{ block.id }}-secondLine">{{ block.settings.textForShowSecondLine }} 
+        <a class="textForShow-{{ block.id }}-anchor" href="{{ block.settings.textForShow-anchor }}">{{ block.settings.textForShow-anchorText }}</a>
       </p>
     </div>
     {% endcase %}
@@ -74,7 +74,19 @@
       margin:auto;
       height:{{block.settings.height}}px;
     }
-    
+
+  {% when "textForShow" %}
+    .textForShow-{{ block.id }}-firstLine, .textForShow-{{ block.id }}-secondLine {
+      font-size:{{block.settings.font-size | append:"px"}};
+    font-family: {{block.settings.font-family}};
+    line-height: {{block.settings.line-height}}px;
+    color: {{block.settings.text-color}};
+      text-align:{{block.settings.align_text}};
+    }
+
+  .textForShow-{{ block.id }}-anchor{
+    color: {{block.settings.anchorText-color}};
+  }
 
   {% endcase %}
 
@@ -146,6 +158,12 @@
             "id":"text-color",
             "label":"Text Color",
             "default": "#FFFFFF"
+          },
+          {
+          "type": "color",
+            "id":"anchorText-color",
+            "label":"Anchor Text Color",
+            "default": "#000080"
           },
           {
           "type": "font",
