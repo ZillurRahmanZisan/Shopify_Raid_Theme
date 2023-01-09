@@ -9,7 +9,7 @@
 
   {% when "imageSection" %}
     <div class="imageSection-{{ block.id }}">
-      <img class="imageSection-{{ block.id }}-width-{{ block.settings.imageSection }}" src="">
+      <img class="imageSection-{{ block.id }}-width-{{ block.settings.imageSection }}" src="{{ block.settings.upload_image | img_url:"200x200"}}">
     </div>
 
   {% when "textForShow" %}
@@ -31,8 +31,8 @@
     "name": "taskOne",
     "blocks":[
       {
-        "name": "text-block",
-        "type": "text-block",
+        "name": "Headline",
+        "type": "headLine",
         "settings":[
           {
             "type": "richtext",
@@ -41,9 +41,19 @@
             "default":"<p>404- Not Found</p>"
           }
         ]
+      },
+      {
+        "name": "Image",
+        "type": "imageSection",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "upload_image",
+            "label":"Change Your Image"
+          }
+        ]
       }
     ],
-    "settings": [],
     "presets": [
 		{ "name": "Test One" }
 	]
