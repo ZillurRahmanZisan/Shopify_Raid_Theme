@@ -1,12 +1,36 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
-{% endschema %}
+<section class="section-wrapper-{{ section.id }}">
+  {% for block in section.blocks %}
+
+  {% case block.type %}
+    {% when "headLine" %}
+    <div class="headLine-{{ block.id }}">
+      <p class="headLine-{{ block.id }}-width-{{ block.settings.headLine }}">{{ block.settings.headLine }}</p>
+    </div>
+
+  {% when "imageSection" %}
+    <div class="imageSection-{{ block.id }}">
+      <img class="imageSection-{{ block.id }}-width-{{ block.settings.imageSection }}" src="">
+    </div>
+
+  {% when "textForShow" %}
+    <div>
+      <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowFirstLine }}</p>
+      <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowSecondLine }} 
+        <a class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow- }}">{{ block.settings.textForShow-anchor }}</a>
+      </p>
+    </div>
+    {% endcase %}
+
+  {% endfor %}
+</section>
+
+
+
+
 
 {% stylesheet %}
 {% endstylesheet %}
 
 {% javascript %}
+  
 {% endjavascript %}
