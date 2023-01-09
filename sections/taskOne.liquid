@@ -4,12 +4,12 @@
   {% case block.type %}
     {% when "headLine" %}
     <div class="headLine-{{ block.id }}">
-      <p class="headLine-{{ block.id }}-width-{{ block.settings.headLine }}">{{ block.settings.headLine }}</p>
+      <p class="headLine-{{ block.id }}-width-{{ block.settings.text-block-width }}">{{ block.settings.headLine }}</p>
     </div>
 
   {% when "imageSection" %}
     <div class="imageSection-{{ block.id }}">
-      <img class="imageSection-{{ block.id }}-width-{{ block.settings.imageSection }}" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+      <img class="imageSection-{{ block.id }}-width-{{ block.settings.image-block-width }}" src="{{ block.settings.upload_image | img_url:"200x200"}}">
     </div>
 
   {% when "textForShow" %}
@@ -65,6 +65,9 @@
     line-height: {{block.settings.mobile-line-height}}px;
     color: {{block.settings.mobile-text-color}};
   }
+
+  {% when "imageSection" %}
+    
 
   {% endcase %}
 
@@ -150,8 +153,8 @@
           },
           {
           "type": "select",
-            "id":"block-width",
-            "label":"Width of BLock",
+            "id":"text-block-width",
+            "label":"Width of Text BLock",
             "options":[
               {
                 "value":"small",
@@ -213,6 +216,65 @@
             "type": "image_picker",
             "id": "upload_image",
             "label":"Change Your Image"
+          },
+          {
+          "type": "select",
+            "id":"align_image",
+            "label":"Image Alignment",
+            "options":[
+              {
+                "value":"fill",
+                "label":"Fill"
+              },
+              {
+                "value":"contain",
+                "label":"Contain"
+              },
+              {
+                "value":"cover",
+                "label":"Cover"
+              },
+              {
+                "value":"scale-down",
+                "label":"Scale Down"
+              },
+              {
+                "value":"none",
+                "label":"None"
+              }]},
+          {
+          "type": "select",
+            "id":"image-block-width",
+            "label":"Width of Image BLock",
+            "options":[
+              {
+                "value":"small",
+                "label":"Small"
+              },
+              {
+                "value":"medium",
+                "label":"Medium"
+              },
+              {
+                "value":"large",
+                "label":"Large"
+              },
+              {
+                "value":"custom",
+                "label":"Custom"
+              }
+            ],
+            "default": "medium"
+          },
+           {
+          "type": "range",
+            "id":"custom-block-width",
+            "label":"Change your block Width",
+            "min": 100,
+            "max": 2000,
+            "step": 50,
+            "unit": "px",
+            "default": 800
           }
         ]
       },
