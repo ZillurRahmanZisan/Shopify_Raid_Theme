@@ -1,6 +1,19 @@
 <section class="section-wrapper-{{ section.id }}">
   {% for block in section.blocks %}
 
+  <div class="headLine-{{ block.id }}">
+      <p class="headLine-{{ block.id }}-width-{{ block.settings.headLine }}">{{ block.settings.headLine }}</p>
+    </div>
+  <div class="imageSection-{{ block.id }}">
+      <img class="imageSection-{{ block.id }}-width-{{ block.settings.imageSection }}" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+    </div>
+  <div>
+      <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowFirstLine }}</p>
+      <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowSecondLine }} 
+        <a class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}" href="{{ block.settings.textForShow-anchor }}">{{ block.settings.textForShow-anchorText }}</a>
+      </p>
+    </div>
+    
   {% case block.type %}
     {% when "headLine" %}
     <div class="headLine-{{ block.id }}">
