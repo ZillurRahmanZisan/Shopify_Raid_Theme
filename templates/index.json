@@ -331,10 +331,10 @@
           "type": "headLine",
           "settings": {
             "headLine": "<p>404- Not Found<\/p>",
-            "font-size": 16,
-            "mobile-font-size": 10,
-            "line-height": 16,
-            "mobile-line-height": 16,
+            "font-size": 30,
+            "mobile-font-size": 25,
+            "line-height": 53,
+            "mobile-line-height": 51,
             "text-color": "#000000",
             "block-width": "medium",
             "custom-block-width": 800,
@@ -346,11 +346,21 @@
           "settings": {
             "upload_image": "shopify:\/\/shop_images\/Dyson-Logo.jpg"
           }
+        },
+        "69f21a7d-717b-49d7-aba5-6f668ee79166": {
+          "type": "textForShow",
+          "settings": {
+            "textForShowFirstLine": "Oops, it looks like the page you are looking for is no longer here...",
+            "textForShowSecondLine": "Choose one of the links below or",
+            "textForShow-anchor": "\/",
+            "textForShow-anchorText": "click here to return home."
+          }
         }
       },
       "block_order": [
         "a5a77dab-9b9d-49ac-a833-d0250222325e",
-        "e24db15e-40d5-4f1a-937f-b57231dd7dce"
+        "e24db15e-40d5-4f1a-937f-b57231dd7dce",
+        "69f21a7d-717b-49d7-aba5-6f668ee79166"
       ],
       "settings": {
       }
