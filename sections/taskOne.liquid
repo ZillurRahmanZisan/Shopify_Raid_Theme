@@ -49,7 +49,7 @@
   }
 
   .section-wrapper-{{ section.id }} .headLine-{{ block.id }} p{
-    font-size:{{block.settings.font-size | append:px}};
+    font-size:{{block.settings.font-size | append:"px"}};
     font-family: {{block.settings.font-family}};
     line-height: {{block.settings.line-height}}px;
     color: {{block.settings.text-color}};
@@ -60,7 +60,7 @@
   }
 
   @media only screen and (max-width: 760px){
-    font-size:{{block.settings.mobile-font-size | append:px}};
+    font-size:{{block.settings.mobile-font-size | append:"px"}};
     font-family: {{block.settings.mobile-font-family}};
     line-height: {{block.settings.mobile-line-height}}px;
     color: {{block.settings.mobile-text-color}};
