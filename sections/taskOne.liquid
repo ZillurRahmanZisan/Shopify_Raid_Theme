@@ -86,6 +86,7 @@
 
   .textForShow-{{ block.id }}-anchor{
     color: {{block.settings.anchorText-color}};
+    text-decoration: {{ block.settings.text-decoration }}
   }
 
   {% endcase %}
@@ -378,7 +379,29 @@
             "id":"anchorText-color",
             "label":"Anchor Text Color",
             "default": "#000080"
-          }
+          },
+          {
+          "type": "select",
+            "id":"text-decoration",
+            "label":"Anchor Text Decoration",
+            "options":[
+              {
+                "value":"overline",
+                "label":"Overline"
+              },
+              {
+                "value":"line-through",
+                "label":"Line-through"
+              },
+              {
+                "value":"underline",
+                "label":"Underline"
+              },
+              {
+                "value":"underline overline",
+                "label":"Underline and Overline"
+              }]}
+          
         ]
       }
     ],
