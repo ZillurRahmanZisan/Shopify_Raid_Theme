@@ -67,7 +67,26 @@
   }
 
   {% when "imageSection" %}
-    
+    .imageSection-{{ block.id }}-width-small{
+      max-width:1140px;
+      width: {{block.settings.width}}px;
+      object-fit:{{block.settings.align_image}}
+    }
+    .imageSection-{{ block.id }}-width-medium{
+      max-width:1140px;
+      width: {{block.settings.width}}px;
+      object-fit:{{block.settings.align_image}}
+    }
+  .imageSection-{{ block.id }}-width-large{
+      max-width:100%;
+      width: {{block.settings.width}}px;
+      object-fit:{{block.settings.align_image}}
+    }
+  .imageSection-{{ block.id }}-width-custom{
+      max-width:{{block.settings.custom-block-width | append: "px"}};;
+      width: {{block.settings.width}}px;
+      object-fit:{{block.settings.align_image}}
+    }
 
   {% endcase %}
 
@@ -273,6 +292,16 @@
             "min": 100,
             "max": 2000,
             "step": 50,
+            "unit": "px",
+            "default": 800
+          },
+          {
+          "type": "range",
+            "id":"width",
+            "label":"Image Width",
+            "min": 200,
+            "max": 2000,
+            "step": 100,
             "unit": "px",
             "default": 800
           }
