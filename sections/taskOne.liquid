@@ -16,7 +16,7 @@
     <div>
       <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowFirstLine }}</p>
       <p class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}">{{ block.settings.textForShowSecondLine }} 
-        <a class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow- }}">{{ block.settings.textForShow-anchor }}</a>
+        <a class="textForShow-{{ block.id }}-width-{{ block.settings.textForShow }}" href="{{ block.settings.textForShow-anchor }}">{{ block.settings.textForShow-anchorText }}</a>
       </p>
     </div>
     {% endcase %}
@@ -50,6 +50,36 @@
             "type": "image_picker",
             "id": "upload_image",
             "label":"Change Your Image"
+          }
+        ]
+      },
+      {
+        "name": "Below Text",
+        "type": "textForShow",
+        "settings":[
+          {
+            "type": "text",
+            "id": "textForShowFirstLine",
+            "label":"Change the First text",
+            "default": "Oops, it looks like the page you are looking for is no longer here..."
+          },
+          {
+            "type": "text",
+            "id": "textForShowSecondLine",
+            "label":"Change the Second text",
+            "default": "Choose one of the links below or "
+          },
+          {
+            "type": "text",
+            "id": "textForShow-anchor",
+            "label":"Change the anchor",
+            "default": "google.com"
+          },
+          {
+            "type": "text",
+            "id": "textForShow-anchorText",
+            "label":"Change the anchor Text",
+            "default": "google.com"
           }
         ]
       }
