@@ -323,6 +323,29 @@
         "faq_title": "Frequently Asked Questions",
         "faq_description": "You can ask about your desire."
       }
+    },
+    "b581d458-c796-4813-941a-5304ea503826": {
+      "type": "taskOne",
+      "blocks": {
+        "a5a77dab-9b9d-49ac-a833-d0250222325e": {
+          "type": "headLine",
+          "settings": {
+            "headLine": "<p>404- Not Found<\/p>"
+          }
+        },
+        "e24db15e-40d5-4f1a-937f-b57231dd7dce": {
+          "type": "imageSection",
+          "settings": {
+            "upload_image": "shopify:\/\/shop_images\/Dyson-Logo.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "a5a77dab-9b9d-49ac-a833-d0250222325e",
+        "e24db15e-40d5-4f1a-937f-b57231dd7dce"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -333,6 +356,7 @@
     "multicolumn",
     "collapsible-content",
     "newsletter",
-    "fef46b69-b1ae-42a1-ab64-29e87e637a48"
+    "fef46b69-b1ae-42a1-ab64-29e87e637a48",
+    "b581d458-c796-4813-941a-5304ea503826"
   ]
 }
