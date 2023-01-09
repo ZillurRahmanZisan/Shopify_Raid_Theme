@@ -39,7 +39,92 @@
             "id": "headLine",
             "label":"Change the headline",
             "default":"<p>404- Not Found</p>"
+          },
+          {
+          "type": "range",
+            "id":"font-size",
+            "label":"Font Size",
+            "min": 10,
+            "max": 50,
+            "step": 1,
+            "unit": "px",
+            "default": 16
+          }, {
+          "type": "range",
+            "id":"mobile-font-size",
+            "label":"Font Size For Mobile Device",
+            "min": 8,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "default": 10
+          },
+           {
+          "type": "range",
+            "id":"line-height",
+            "label":"Line Height",
+            "min": 10,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 16
+          },
+          {
+          "type": "range",
+            "id":"mobile-line-height",
+            "label":"Line Height For Mobile",
+            "min": 10,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 16
+          },
+          {
+          "type": "font",
+            "id":"font",
+            "label":"Font Family"
+          },
+          {
+          "type": "color",
+            "id":"text-color",
+            "label":"Text Color",
+            "default": "#000000"
+          },
+          {
+          "type": "select",
+            "id":"block-width",
+            "label":"Width of BLock",
+            "options":[
+              {
+                "value":"small",
+                "label":"Small"
+              },
+              {
+                "value":"medium",
+                "label":"Medium"
+              },
+              {
+                "value":"full",
+                "label":"Full"
+              },
+              {
+                "value":"custom",
+                "label":"Custom"
+              }
+            ],
+            "default": "medium"
+          },
+           {
+          "type": "range",
+            "id":"custom-block-width",
+            "label":"Change your block Width",
+            "min": 100,
+            "max": 2000,
+            "step": 50,
+            "unit": "px",
+            "default": 800
           }
+          
         ]
       },
       {
@@ -89,10 +174,3 @@
 	]
   }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-  
-{% endjavascript %}
