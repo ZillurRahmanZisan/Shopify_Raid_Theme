@@ -11,7 +11,10 @@
       {% when 'imageSection' %}
         {% if block.settings.upload_image == blank %}
           <div class="imageSection-{{ block.id }}">
-            <img class="imageSection-{{ block.id }}-width" src="{{ "404-image-min.webp" | asset_url}}">
+            <img
+              class="imageSection-{{ block.id }}-width"
+              src="https://cdn.shopify.com/s/files/1/0575/9575/6709/files/404-Image-min.jpg?v=1655291164"
+            >
           </div>
         {% else %}
           <div class="imageSection-{{ block.id }}">
