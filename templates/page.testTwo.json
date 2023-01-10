@@ -40,10 +40,123 @@
         "padding_top": 40,
         "padding_bottom": 40
       }
+    },
+    "9848236e-10d5-4dde-8917-913bfa0349d2": {
+      "type": "blogDetailsFirstSection",
+      "blocks": {
+        "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-0": {
+          "type": "firstParagraph",
+          "settings": {
+            "firstParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "font-size": 24,
+            "mobile-font-size": 20,
+            "line-height": 30,
+            "mobile-line-height": 16,
+            "letter-spacing": 1,
+            "mobile-letter-spacing": 1,
+            "font-family": "",
+            "text-color": "#333333",
+            "mobile-font-family": "",
+            "mobile-text-color": "#333333",
+            "text-indent": 0,
+            "mobile-text-indent": 0,
+            "align_text": "left"
+          }
+        },
+        "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-1": {
+          "type": "secondParagraph",
+          "settings": {
+            "secondParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "font-size": 18,
+            "mobile-font-size": 20,
+            "line-height": 30,
+            "mobile-line-height": 16,
+            "letter-spacing": 1,
+            "mobile-letter-spacing": 1,
+            "text-indent": 0,
+            "mobile-text-indent": 0,
+            "font-family": "",
+            "text-color": "#333333",
+            "mobile-font-family": "",
+            "mobile-text-color": "#333333",
+            "align_text": "left"
+          }
+        },
+        "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-2": {
+          "type": "spacer-block",
+          "settings": {
+            "spacer-height": 30
+          }
+        }
+      },
+      "block_order": [
+        "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-0",
+        "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-1",
+        "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-2"
+      ],
+      "settings": {
+        "text-block-width": "small",
+        "custom-block-width": 800
+      }
+    },
+    "03bd5f5a-78bb-4d0c-9d51-6e849fa468f9": {
+      "type": "blogDetailsSecondSection",
+      "blocks": {
+        "template--17538998665536__03bd5f5a-78bb-4d0c-9d51-6e849fa468f9-1673374227cb71e513-0": {
+          "type": "firstParagraph",
+          "settings": {
+            "firstParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "font-size": 18,
+            "mobile-font-size": 20,
+            "line-height": 30,
+            "mobile-line-height": 16,
+            "letter-spacing": 1,
+            "mobile-letter-spacing": 1,
+            "text-indent": 0,
+            "mobile-text-indent": 0,
+            "font-family": "",
+            "text-color": "#333333",
+            "mobile-font-family": "",
+            "mobile-text-color": "#333333",
+            "align_text": "left"
+          }
+        },
+        "template--17538998665536__03bd5f5a-78bb-4d0c-9d51-6e849fa468f9-1673374227cb71e513-1": {
+          "type": "secondParagraph",
+          "settings": {
+            "secondParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "font-size": 18,
+            "mobile-font-size": 20,
+            "line-height": 30,
+            "mobile-line-height": 16,
+            "letter-spacing": 1,
+            "mobile-letter-spacing": 1,
+            "text-indent": 0,
+            "mobile-text-indent": 0,
+            "font-family": "",
+            "text-color": "#333333",
+            "mobile-font-family": "",
+            "mobile-text-color": "#333333",
+            "align_text": "left"
+          }
+        }
+      },
+      "block_order": [
+        "template--17538998665536__03bd5f5a-78bb-4d0c-9d51-6e849fa468f9-1673374227cb71e513-0",
+        "template--17538998665536__03bd5f5a-78bb-4d0c-9d51-6e849fa468f9-1673374227cb71e513-1"
+      ],
+      "settings": {
+        "text-block-width": "medium",
+        "custom-block-width": 800,
+        "display": "flex",
+        "gap": 20
+      }
     }
   },
   "order": [
     "main",
-    "newsletter"
+    "newsletter",
+    "9848236e-10d5-4dde-8917-913bfa0349d2",
+    "03bd5f5a-78bb-4d0c-9d51-6e849fa468f9"
   ]
 }
