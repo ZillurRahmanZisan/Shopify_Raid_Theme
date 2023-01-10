@@ -69,11 +69,35 @@
             "height": 600,
             "alignment": "left"
           }
+        },
+        "3589b039-9ceb-47c6-8a0d-9a28b323ec1c": {
+          "type": "textForShow",
+          "settings": {
+            "textForShowFirstLine": "Oops, it looks like the page you are looking for is no longer here...",
+            "textForShowSecondLine": "Choose one of the links below or",
+            "textForShow-anchor": "\/",
+            "textForShow-anchorText": "click here to return home.",
+            "font-size": 24,
+            "mobile-font-size": 10,
+            "line-height": 16,
+            "mobile-line-height": 16,
+            "text-indent": 0,
+            "letter-spacing": 1,
+            "font-family": "Helvetica, Arial, sans-serif",
+            "text-color": "#FFFFFF",
+            "mobile-font-family": "Helvetica, Arial, sans-serif",
+            "mobile-text-color": "#FFFFFF",
+            "anchorText-color": "#FFFF00",
+            "cursor": "crosshair",
+            "text-decoration": "underline",
+            "align_text": "center"
+          }
         }
       },
       "block_order": [
         "bdf13919-22d4-4ada-9275-70b3e51f3e19",
-        "cd8c24d4-41cf-4053-a3ca-d0731cd40037"
+        "cd8c24d4-41cf-4053-a3ca-d0731cd40037",
+        "3589b039-9ceb-47c6-8a0d-9a28b323ec1c"
       ],
       "settings": {
       }
