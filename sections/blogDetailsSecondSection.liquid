@@ -1,4 +1,4 @@
-<section class="section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
+<section class="section-wrapper-{{ section.id }} section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'firstParagraph' %}
@@ -9,33 +9,32 @@
         <div class="secondParagraph-{{ block.id }}">
             {{ block.settings.secondParagraph }}
         </div>
-        {% when 'spacer-block' %}
-        <div class="spacer-{{ block.id }}">
-        </div>
 
     {% endcase %}
   {% endfor %}
 </section>
 
 <style>
+    .section-wrapper-{{ section.id }} {
+        background-color: aliceblue;
+        display: {{ section.settings.display}};
+        gap:{{section.settings.gap}}px;
+    }
   .section-wrapper-{{ section.id }}-width-small{
     max-width: 600px;
     margin:0 auto;
-    background-color: aliceblue;
+
   }
   .section-wrapper-{{ section.id }}-width-medium{
     max-width: 967px;
     margin:0 auto;
-    background-color: aliceblue;
   }
   .section-wrapper-{{ section.id }}-width-large{
     max-width: 100%;
-    background-color: aliceblue;
   }
   .section-wrapper-{{ section.id }}-width-custom{
     max-width: {{section.settings.custom-block-width | append: "px"}};
     margin:0 auto;
-    background-color: aliceblue;
   }
   .section-wrapper-{{ section.id }}-width-large p{
     padding: 0 32px;
@@ -91,11 +90,6 @@
         text-indent:{{ block.settings.mobile-text-indent }}cm;
       }
 
-      {% when 'spacer-block' %}
-        .spacer-{{block.id}}{
-          height:{{ block.settings.spacer-height}}px;
-        }
-
       {% endcase %}
 
       {% endfor %}
@@ -107,7 +101,7 @@
     "name": "Blog Details ",
        "settings": [
         {
-         "type": "select",
+            "type": "select",
            "id":"text-block-width",
            "label":"Width of Blog Details",
            "options":[
@@ -139,6 +133,40 @@
            "step": 50,
            "unit": "px",
            "default": 800
+         },
+         {
+            "type": "select",
+           "id":"display",
+           "label":"Display Position of Blog Details",
+           "options":[
+             {
+               "value":"block",
+               "label":"Block"
+             },
+             {
+               "value":"inline",
+               "label":"Inline"
+             },
+             {
+               "value":"block-inline",
+               "label":"Block + Inline"
+             },
+             {
+               "value":"flex",
+               "label":"Flex"
+             }
+           ],
+           "default": "flex"
+         },
+         {
+         "type": "range",
+           "id":"gap",
+           "label":"Gap Between Paragraph",
+           "min": 10,
+           "max": 100,
+           "step": 5,
+           "unit": "px",
+           "default": 20
          }
        ],
 
@@ -160,7 +188,7 @@
            "max": 50,
            "step": 1,
            "unit": "px",
-           "default": 24
+           "default": 18
          }, {
          "type": "range",
            "id":"mobile-font-size",
@@ -212,6 +240,26 @@
            "default": 1
          },
          {
+         "type": "range",
+           "id":"text-indent",
+           "label":"Text Indent",
+           "min": 0,
+           "max": 10,
+           "step": 0.5,
+           "unit": "cm",
+           "default": 0
+         },
+         {
+         "type": "range",
+           "id":"mobile-text-indent",
+           "label":"Text Indent For Mobile",
+           "min": 0,
+           "max": 10,
+           "step": 0.5,
+           "unit": "cm",
+           "default": 0
+         },
+         {
          "type": "font",
            "id":"font-family",
            "label":"Font Family"
@@ -232,26 +280,6 @@
            "id":"mobile-text-color",
            "label":"Text Color For Mobile",
            "default": "#333333"
-         },
-         {
-         "type": "range",
-           "id":"text-indent",
-           "label":"Text Indent",
-           "min": 0,
-           "max": 10,
-           "step": 0.5,
-           "unit": "cm",
-           "default": 0
-         },
-         {
-         "type": "range",
-           "id":"mobile-text-indent",
-           "label":"Text Indent For Mobile",
-           "min": 0,
-           "max": 10,
-           "step": 0.5,
-           "unit": "cm",
-           "default": 0
          },
           {
          "type": "select",
@@ -403,34 +431,18 @@
              }
            ],
            "default": "left"
-         }]},
-         {
-        "name": "Spacer",
-       "type": "spacer-block",
-       "settings": [
-          {
-            "type": "range",
-           "id":"spacer-height",
-           "label":"Spacer Height",
-           "min": 0,
-           "max": 200,
-           "step": 5,
-           "unit": "px",
-           "default": 30
-          }
+         }
          ]}
        ],
        "presets": [
-	{ "name": "Blog Details First Section",
+	{ "name": "Blog Details Second Section",
     "blocks": [
         {
           "type": "firstParagraph"
-        },
+        }
+        ,
         {
           "type": "secondParagraph"
-        },
-        {
-          "type":"spacer-block"
         }
       ]}
 ]
