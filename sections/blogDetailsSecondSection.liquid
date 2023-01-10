@@ -3,13 +3,12 @@
     {% case block.type %}
       {% when 'firstParagraph' %}
         <div class="firstParagraph-{{ block.id }}">
-            {{ block.settings.firstParagraph }}
+          {{ block.settings.firstParagraph }}
         </div>
-        {% when 'secondParagraph' %}
+      {% when 'secondParagraph' %}
         <div class="secondParagraph-{{ block.id }}">
-            {{ block.settings.secondParagraph }}
+          {{ block.settings.secondParagraph }}
         </div>
-
     {% endcase %}
   {% endfor %}
 </section>
@@ -23,7 +22,6 @@
   .section-wrapper-{{ section.id }}-width-small{
     max-width: 600px;
     margin:0 auto;
-
   }
   .section-wrapper-{{ section.id }}-width-medium{
     max-width: 967px;
@@ -44,7 +42,7 @@
 
       {% case block.type %}
         {% when "firstParagraph" %}
-      
+
       .firstParagraph-{{ block.id }} p{
         font-size:{{block.settings.font-size | append:"px"}};
         font-family: {{block.settings.font-family}};
@@ -94,7 +92,6 @@
 
       {% endfor %}
 </style>
-  
 
 {% schema %}
   {
@@ -447,7 +444,6 @@
       ]}
 ]
      }
-
 {% endschema %}
 
 {% stylesheet %}
