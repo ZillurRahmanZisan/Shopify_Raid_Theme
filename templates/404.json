@@ -1,1 +1,87 @@
-{"sections":{"main":{"type":"main-404","settings":{}},"newsletter":{"type":"newsletter","blocks":{"heading":{"type":"heading","settings":{"heading":"SUBSCRIBE TO OUR EMAILS","heading_size":"h1"}},"paragraph":{"type":"paragraph","settings":{"text":"<p>Be the first to know about new collections and exclusive offers.<\/p>"}},"email-form":{"type":"email_form","settings":{}}},"block_order":["heading","paragraph","email-form"],"settings":{"color_scheme":"accent-1","full_width":true,"padding_top":40,"padding_bottom":40}}},"order":["main","newsletter"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "SUBSCRIBE TO OUR EMAILS",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+          }
+        },
+        "email-form": {
+          "type": "email_form",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email-form"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "2bd3482a-ee79-4938-9109-e8bd7dcbe679": {
+      "type": "taskOne",
+      "blocks": {
+        "bdf13919-22d4-4ada-9275-70b3e51f3e19": {
+          "type": "headLine",
+          "settings": {
+            "headLine": "<p>404- Not Found<\/p>",
+            "font-size": 32,
+            "mobile-font-size": 20,
+            "line-height": 16,
+            "mobile-line-height": 16,
+            "letter-spacing": 1,
+            "mobile-letter-spacing": 1,
+            "font-family": "Helvetica, Arial, sans-serif",
+            "text-color": "#FFFFFF",
+            "mobile-font-family": "Helvetica, Arial, sans-serif",
+            "mobile-text-color": "#FFFFFF",
+            "text-block-width": "medium",
+            "custom-block-width": 800,
+            "align_text": "center"
+          }
+        },
+        "cd8c24d4-41cf-4053-a3ca-d0731cd40037": {
+          "type": "imageSection",
+          "settings": {
+            "align_image": "contain",
+            "width": 2000,
+            "height": 500,
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "bdf13919-22d4-4ada-9275-70b3e51f3e19",
+        "cd8c24d4-41cf-4053-a3ca-d0731cd40037"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter",
+    "2bd3482a-ee79-4938-9109-e8bd7dcbe679"
+  ]
+}
