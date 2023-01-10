@@ -10,7 +10,10 @@
 
       {% when 'imageSection' %}
         <div class="imageSection-{{ block.id }}">
-          <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+          <img
+            class="imageSection-{{ block.id }}-width"
+            src="{{ 'lifestyle-2' | placeholder_svg_tag}} or {{ block.settings.upload_image | img_url:"200x200"}}"
+          >
         </div>
 
       {% when 'textForShow' %}
