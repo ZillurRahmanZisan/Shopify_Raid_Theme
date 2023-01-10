@@ -106,7 +106,7 @@
     .textForShow-{{ block.id }}-anchor{
       color: {{block.settings.anchorText-color}};
       text-decoration: {{ block.settings.text-decoration }};
-      cursor: pointer;
+      cursor: {{ block.settings.cursor }};
     }
 
     {% endcase %}
@@ -459,6 +459,38 @@
            "id":"anchorText-color",
            "label":"Anchor Text Color",
            "default": "#FFFF00"
+         },
+         {
+         "type": "select",
+           "id":"cursor",
+           "label":"Cursor",
+           "options":[
+             {
+               "value":"help",
+               "label":"Help"
+             },
+             {
+               "value":"wait",
+               "label":"Wait"
+             },
+             {
+               "value":"crosshair",
+               "label":"Crosshair"
+             },
+                          {
+               "value":"pointer",
+               "label":"Pointer"
+             },
+             {
+               "value":"grab",
+               "label":"Grab"
+             },
+             {
+               "value":"auto",
+               "label":"Auto"
+             }
+           ],
+           "default": "auto"
          },
          {
          "type": "select",
