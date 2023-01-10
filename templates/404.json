@@ -65,7 +65,7 @@
           "type": "imageSection",
           "settings": {
             "align_image": "contain",
-            "width": 2000,
+            "width": 400,
             "height": 500,
             "alignment": "center"
           }
