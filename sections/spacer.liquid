@@ -1,4 +1,4 @@
-<section class="section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
+<section class="section-wrapper-{{ section.id }}">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'spacer-block' %}
@@ -13,7 +13,7 @@
     {% case block.type %}
 
     {% when 'spacer-block' %}
-      .spacer-{{block.id}}{
+      .section-wrapper-{{ section.id }} .spacer-{{block.id}}{
         height:{{ block.settings.spacer-height}}px;
       }
 
