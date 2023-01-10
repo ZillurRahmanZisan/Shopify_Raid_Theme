@@ -1,43 +1,4 @@
 <section class="section-wrapper-{{ section.id }}">
-  {%- if section.settings.headLine -%}
-    <div class="headLine-{{ block.id }}">
-      <p class="headLine-{{ block.id }}-width-{{ block.settings.text-block-width }}">{{ block.settings.headLine }}</p>
-    </div>
-    {%- if section.settings.imageSection != blank -%}
-      <div class="imageSection-{{ block.id }}">
-        <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
-      </div>
-      <!--
-        <img
-          srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
-            {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
-            {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
-            {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
-            {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
-            {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
-            {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
-            {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
-            {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
-          sizes="100vw"
-          src="{{ section.settings.image | image_url: width: 1500 }}"
-          loading="lazy"
-          alt="{{ section.settings.image.alt | escape }}"
-        >
-      -->
-      {%- if section.settings.textForShow -%}
-        <div class="textForShow-{{ block.id }}">
-          <p class="textForShow-{{ block.id }}-firstLine">{{ block.settings.textForShowFirstLine }}</p>
-          <p class="textForShow-{{ block.id }}-secondLine">
-            {{ block.settings.textForShowSecondLine }}
-            <a class="textForShow-{{ block.id }}-anchor" href="{{ block.settings.textForShow-anchor }}">
-              {{- block.settings['textForShow-anchorText'] -}}
-            </a>
-          </p>
-        </div>
-      {%- endif -%}
-    {%- endif -%}
-  {%- endif -%}
-
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'headLine' %}
@@ -473,7 +434,18 @@
      }
    ],
    "presets": [
-	{ "name": "Test One" }
+	{ "name": "Test One",
+    "blocks": [
+        {
+          "type": "headLine"
+        },
+        {
+          "type": "imageSection"
+        },
+        {
+          "type": "textForShow"
+        }
+      ]}
 ]
  }
 {% endschema %}
