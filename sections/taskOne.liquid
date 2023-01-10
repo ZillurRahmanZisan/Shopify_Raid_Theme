@@ -36,82 +36,85 @@
 </section>
 
 <style>
-  {% for block in section.blocks %}
+  .section-wrapper-{{ section.id }}{
+    padding: 20px;
+  }
+    {% for block in section.blocks %}
 
-    {% case block.type %}
-      {% when "headLine" %}
-    .headLine-{{ block.id }}-width-small{
-      max-width: 576px;
-      margin:0 auto;
-    }
-    .headLine-{{ block.id }}-width-medium{
-      max-width: 1140px;
-      margin:0 auto;
-    }
-    .headLine-{{ block.id }}-width-large{
-      max-width: 100%;
-    }
-    .headLine-{{ block.id }}-width-custom{
-      max-width: {{block.settings.custom-block-width | append: "px"}};
-      margin:0 auto;
-    }
-    .headLine-{{ block.id }}-width-large p{
-      padding: 0 32px;
-    }
+      {% case block.type %}
+        {% when "headLine" %}
+      .headLine-{{ block.id }}-width-small{
+        max-width: 576px;
+        margin:0 auto;
+      }
+      .headLine-{{ block.id }}-width-medium{
+        max-width: 1140px;
+        margin:0 auto;
+      }
+      .headLine-{{ block.id }}-width-large{
+        max-width: 100%;
+      }
+      .headLine-{{ block.id }}-width-custom{
+        max-width: {{block.settings.custom-block-width | append: "px"}};
+        margin:0 auto;
+      }
+      .headLine-{{ block.id }}-width-large p{
+        padding: 0 32px;
+      }
 
-    .section-wrapper-{{ section.id }} .headLine-{{ block.id }} p{
-      font-size:{{block.settings.font-size | append:"px"}};
-      font-family: {{block.settings.font-family}};
-      line-height: {{block.settings.line-height}}px;
-      color: {{block.settings.text-color}};
-      letter-spacing:{{ block.settings.letter-spacing }}px;
+      .section-wrapper-{{ section.id }} .headLine-{{ block.id }} p{
+        font-size:{{block.settings.font-size | append:"px"}};
+        font-family: {{block.settings.font-family}};
+        line-height: {{block.settings.line-height}}px;
+        color: {{block.settings.text-color}};
+        letter-spacing:{{ block.settings.letter-spacing }}px;
 
-    }
+      }
 
-    .section-wrapper-{{ section.id }} .headLine-{{ block.id }}{
+      .section-wrapper-{{ section.id }} .headLine-{{ block.id }}{
+        text-align:{{block.settings.align_text}};
+      }
+
+      @media only screen and (max-width: 760px){
+        font-size:{{block.settings.mobile-font-size | append:"px"}};
+        font-family: {{block.settings.mobile-font-family}};
+        line-height: {{block.settings.mobile-line-height}}px;
+        color: {{block.settings.mobile-text-color}};
+        letter-spacing:{{ block.settings.mobile-letter-spacing }}px;
+      }
+
+      {% when "imageSection" %}
+        .imageSection-{{ block.id }}-width{
+          max-width:1140px;
+          width: {{block.settings.width}}px;
+          object-fit:{{block.settings.align_image}};
+          height:{{block.settings.height}}px;
+        }
+
+
+      {% when "textForShow" %}
+    .textForShow-{{ block.id }}{
       text-align:{{block.settings.align_text}};
     }
 
-    @media only screen and (max-width: 760px){
-      font-size:{{block.settings.mobile-font-size | append:"px"}};
-      font-family: {{block.settings.mobile-font-family}};
-      line-height: {{block.settings.mobile-line-height}}px;
-      color: {{block.settings.mobile-text-color}};
-      letter-spacing:{{ block.settings.mobile-letter-spacing }}px;
-    }
+        .textForShow-{{ block.id }}-firstLine, .textForShow-{{ block.id }}-secondLine {
+          font-size:{{block.settings.font-size | append:"px"}};
+        font-family: {{block.settings.font-family}};
+        line-height: {{block.settings.line-height}}px;
+        color: {{block.settings.text-color}};
+        text-indent:{{ block.settings.text-indent }}cm;
+     letter-spacing:{{ block.settings.letter-spacing }}px;
+        }
 
-    {% when "imageSection" %}
-      .imageSection-{{ block.id }}-width{
-        max-width:1140px;
-        width: {{block.settings.width}}px;
-        object-fit:{{block.settings.align_image}};
-        height:{{block.settings.height}}px;
+      .textForShow-{{ block.id }}-anchor{
+        color: {{block.settings.anchorText-color}};
+        text-decoration: {{ block.settings.text-decoration }};
+        cursor: {{ block.settings.cursor }};
       }
 
+      {% endcase %}
 
-    {% when "textForShow" %}
-  .textForShow-{{ block.id }}{
-    text-align:{{block.settings.align_text}};
-  }
-
-      .textForShow-{{ block.id }}-firstLine, .textForShow-{{ block.id }}-secondLine {
-        font-size:{{block.settings.font-size | append:"px"}};
-      font-family: {{block.settings.font-family}};
-      line-height: {{block.settings.line-height}}px;
-      color: {{block.settings.text-color}};
-      text-indent:{{ block.settings.text-indent }}cm;
-   letter-spacing:{{ block.settings.letter-spacing }}px;
-      }
-
-    .textForShow-{{ block.id }}-anchor{
-      color: {{block.settings.anchorText-color}};
-      text-decoration: {{ block.settings.text-decoration }};
-      cursor: {{ block.settings.cursor }};
-    }
-
-    {% endcase %}
-
-    {% endfor %}
+      {% endfor %}
 </style>
 
 {% schema %}
