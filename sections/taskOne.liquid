@@ -64,7 +64,7 @@
       font-family: {{block.settings.font-family}};
       line-height: {{block.settings.line-height}}px;
       color: {{block.settings.text-color}};
-      letter-spacing:{{ block.settings.letter-spacing }};
+      letter-spacing:{{ block.settings.letter-spacing }}px;
 
     }
 
@@ -77,7 +77,7 @@
       font-family: {{block.settings.mobile-font-family}};
       line-height: {{block.settings.mobile-line-height}}px;
       color: {{block.settings.mobile-text-color}};
-      letter-spacing:{{ block.settings.mobile-letter-spacing }};
+      letter-spacing:{{ block.settings.mobile-letter-spacing }}px;
     }
 
     {% when "imageSection" %}
@@ -103,8 +103,8 @@
       font-family: {{block.settings.font-family}};
       line-height: {{block.settings.line-height}}px;
       color: {{block.settings.text-color}};
-      text-indent:{{ block.settings.text-indent }};
-   letter-spacing:{{ block.settings.letter-spacing }};
+      text-indent:{{ block.settings.text-indent }}cm;
+   letter-spacing:{{ block.settings.letter-spacing }}px;
       }
 
     .textForShow-{{ block.id }}-anchor{
