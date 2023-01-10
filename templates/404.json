@@ -67,7 +67,7 @@
             "align_image": "contain",
             "width": 1400,
             "height": 600,
-            "alignment": "center"
+            "alignment": "left"
           }
         }
       },
