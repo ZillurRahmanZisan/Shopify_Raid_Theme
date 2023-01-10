@@ -10,14 +10,14 @@
 
       {% when 'imageSection' %}
         {% if block.settings.upload_image == blank %}
-          <div class="imageSection-{{ block.id }}">
+          <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
             <img
               class="imageSection-{{ block.id }}-width"
               src="https://cdn.shopify.com/s/files/1/0575/9575/6709/files/404-Image-min.jpg?v=1655291164"
             >
           </div>
         {% else %}
-          <div class="imageSection-{{ block.id }}">
+          <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
             <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
           </div>
         {% endif %}
@@ -86,10 +86,6 @@
         width: {{block.settings.width}}px;
         object-fit:{{block.settings.align_image}};
         height:{{block.settings.height}}px;
-      }
-      .imageSection-{{ block.id }} img{
-        margin-left: auto;
-        margin-right: auto;
       }
 
 
@@ -325,7 +321,27 @@
            "step": 100,
            "unit": "px",
            "default": 300
-         }
+         },
+          {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
        ]
      },
      {
