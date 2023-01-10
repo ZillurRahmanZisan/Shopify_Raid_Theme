@@ -3,16 +3,14 @@
     {% case block.type %}
       {% when 'firstParagraph' %}
         <div class="firstParagraph-{{ block.id }}">
-            {{ block.settings.firstParagraph }}
+          {{ block.settings.firstParagraph }}
         </div>
-        {% when 'secondParagraph' %}
+      {% when 'secondParagraph' %}
         <div class="secondParagraph-{{ block.id }}">
-            {{ block.settings.secondParagraph }}
+          {{ block.settings.secondParagraph }}
         </div>
-        {% when 'spacer-block' %}
-        <div class="spacer-{{ block.id }}">
-        </div>
-
+      {% when 'spacer-block' %}
+        <div class="spacer-{{ block.id }}"></div>
     {% endcase %}
   {% endfor %}
 </section>
@@ -45,7 +43,7 @@
 
       {% case block.type %}
         {% when "firstParagraph" %}
-      
+
       .firstParagraph-{{ block.id }} p{
         font-size:{{block.settings.font-size | append:"px"}};
         font-family: {{block.settings.font-family}};
@@ -53,6 +51,7 @@
         color: {{block.settings.text-color}};
         letter-spacing:{{ block.settings.letter-spacing }}px;
         text-indent:{{ block.settings.text-indent }}cm;
+        padding:{{block.settings.padding}}px;
       }
 
       .firstParagraph-{{ block.id }}{
@@ -66,6 +65,7 @@
         color: {{block.settings.mobile-text-color}};
         letter-spacing:{{ block.settings.mobile-letter-spacing }}px;
         text-indent:{{ block.settings.text-indent }}cm;
+        padding:{{block.settings.padding}}px;
       }
 
       {% when "secondParagraph" %}
@@ -76,6 +76,7 @@
         color: {{block.settings.text-color}};
         letter-spacing:{{ block.settings.letter-spacing }}px;
         text-indent:{{ block.settings.mobile-text-indent }}cm;
+          padding:{{block.settings.padding}}px;
       }
 
       .secondParagraph-{{ block.id }}{
@@ -89,6 +90,7 @@
         color: {{block.settings.mobile-text-color}};
         letter-spacing:{{ block.settings.mobile-letter-spacing }}px;
         text-indent:{{ block.settings.mobile-text-indent }}cm;
+        padding:{{block.settings.padding}}px;
       }
 
       {% when 'spacer-block' %}
@@ -100,7 +102,6 @@
 
       {% endfor %}
 </style>
-  
 
 {% schema %}
   {
@@ -151,6 +152,16 @@
            "id": "firstParagraph",
            "label":"Change the First Paragraph",
            "default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.</p>"
+         },
+         {
+         "type": "range",
+           "id":"padding",
+           "label":"Padding",
+           "min": 5,
+           "max": 50,
+           "step": 5,
+           "unit": "px",
+           "default": 10
          },
          {
          "type": "range",
@@ -282,6 +293,16 @@
            "id": "secondParagraph",
            "label":"Change the Second Paragraph",
            "default":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.</p>"
+         },
+         {
+         "type": "range",
+           "id":"padding",
+           "label":"Padding",
+           "min": 5,
+           "max": 50,
+           "step": 5,
+           "unit": "px",
+           "default": 10
          },
          {
          "type": "range",
@@ -435,7 +456,6 @@
       ]}
 ]
      }
-
 {% endschema %}
 
 {% stylesheet %}
