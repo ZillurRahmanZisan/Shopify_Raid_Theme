@@ -64,7 +64,8 @@
       font-family: {{block.settings.font-family}};
       line-height: {{block.settings.line-height}}px;
       color: {{block.settings.text-color}};
-      letter-spacing:{{ block.settings.letter-spacing }}
+      letter-spacing:{{ block.settings.letter-spacing }};
+      text-indent:{{ block.settings.text-indent }};
     }
 
     .section-wrapper-{{ section.id }} .headLine-{{ block.id }}{
@@ -76,7 +77,8 @@
       font-family: {{block.settings.mobile-font-family}};
       line-height: {{block.settings.mobile-line-height}}px;
       color: {{block.settings.mobile-text-color}};
-      letter-spacing:{{ block.settings.mobile-letter-spacing }}
+      letter-spacing:{{ block.settings.mobile-letter-spacing }};
+  text-indent:{{ block.settings.mobile-text-indent }};
     }
 
     {% when "imageSection" %}
@@ -187,6 +189,26 @@
            "max": 10,
            "step": 0.5,
            "unit": "px",
+           "default": 1
+         },
+         {
+         "type": "range",
+           "id":"text-indent",
+           "label":"Text Indent",
+           "min": 1,
+           "max": 10,
+           "step": 0.5,
+           "unit": "cm",
+           "default": 1
+         },
+         {
+         "type": "range",
+           "id":"mobile-text-indent",
+           "label":"Text Indent For Mobile",
+           "min": 1,
+           "max": 10,
+           "step": 0.5,
+           "unit": "cm",
            "default": 1
          },
          {
