@@ -9,10 +9,15 @@
         </div>
 
       {% when 'imageSection' %}
-        <div class="imageSection-{{ block.id }}">
-          <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
-        </div>
-
+        {% if block.settings.upload_image == blank %}
+          <div class="imageSection-{{ block.id }}">
+            <img class="imageSection-{{ block.id }}-width" src="{{ 'lifestyle-2' | placeholder_svg_tag}}">
+          </div>
+        {% else %}
+          <div class="imageSection-{{ block.id }}">
+            <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+          </div>
+        {% endif %}
       {% when 'textForShow' %}
         <div class="textForShow-{{ block.id }}">
           <p class="textForShow-{{ block.id }}-firstLine">{{ block.settings.textForShowFirstLine }}</p>
