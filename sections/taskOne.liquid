@@ -9,9 +9,9 @@
         </div>
 
       {% when 'imageSection' %}
-        {% if block.settings.upload_image %}
+        {% if block.settings.upload_image == blank %}
           <div class="imageSection-{{ block.id }}">
-            <img class="imageSection-{{ block.id }}-width" src="{{ 'lifestyle-2' | placeholder_svg_tag}}">
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
           </div>
         {% else %}
           <div class="imageSection-{{ block.id }}">
