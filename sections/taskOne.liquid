@@ -74,9 +74,12 @@
         max-width:1140px;
         width: {{block.settings.width}}px;
         object-fit:{{block.settings.align_image}};
-        margin: auto;
         height:{{block.settings.height}}px;
       }
+      .imageSection-{{ block.id }} img{
+        margin: auto;
+      }
+
 
     {% when "textForShow" %}
   .textForShow-{{ block.id }}{
