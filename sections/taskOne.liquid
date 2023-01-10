@@ -10,15 +10,7 @@
 
       {% when 'imageSection' %}
         <div class="imageSection-{{ block.id }}">
-          <img
-            class="imageSection-{{ block.id }}-width"
-            src="
-              {%- if section.settings.imageSection == blank -%}
-              {{ 'lifestyle-2' | placeholder_svg_tag}}
-              {%- else -%}
-              {{ block.settings.upload_image | img_url:"200x200"}}{%- endif -%}
-            "
-          >
+          <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
         </div>
 
       {% when 'textForShow' %}
