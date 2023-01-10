@@ -12,7 +12,12 @@
         <div class="imageSection-{{ block.id }}">
           <img
             class="imageSection-{{ block.id }}-width"
-            src="{{ 'lifestyle-2' | placeholder_svg_tag}} or {{ block.settings.upload_image | img_url:"200x200"}}"
+            src="
+              {%- if section.settings.imageSection == blank -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag}}
+              {%- else -%}
+              {{ block.settings.upload_image | img_url:"200x200"}}{%- endif -%}
+            "
           >
         </div>
 
