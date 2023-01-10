@@ -9,7 +9,7 @@
         </div>
 
       {% when 'imageSection' %}
-        {% if block.settings.upload_image == blank %}
+        {% if block.settings.upload_image %}
           <div class="imageSection-{{ block.id }}">
             <img class="imageSection-{{ block.id }}-width" src="{{ 'lifestyle-2' | placeholder_svg_tag}}">
           </div>
@@ -82,7 +82,7 @@
         height:{{block.settings.height}}px;
       }
       .imageSection-{{ block.id }} img{
-        margin: auto;
+        margin: "auto";
       }
 
 
@@ -101,7 +101,8 @@
 
     .textForShow-{{ block.id }}-anchor{
       color: {{block.settings.anchorText-color}};
-      text-decoration: {{ block.settings.text-decoration }}
+      text-decoration: {{ block.settings.text-decoration }};
+      cursor: "pointer";
     }
 
     {% endcase %}
