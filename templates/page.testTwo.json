@@ -48,6 +48,7 @@
           "type": "firstParagraph",
           "settings": {
             "firstParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "padding": 30,
             "font-size": 24,
             "mobile-font-size": 20,
             "line-height": 30,
@@ -67,6 +68,7 @@
           "type": "secondParagraph",
           "settings": {
             "secondParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "padding": 20,
             "font-size": 18,
             "mobile-font-size": 20,
             "line-height": 30,
@@ -85,7 +87,7 @@
         "template--17538998665536__9848236e-10d5-4dde-8917-913bfa0349d2-1673374226541a1320-2": {
           "type": "spacer-block",
           "settings": {
-            "spacer-height": 30
+            "spacer-height": 165
           }
         }
       },
@@ -97,6 +99,22 @@
       "settings": {
         "text-block-width": "small",
         "custom-block-width": 800
+      }
+    },
+    "2348c060-bf19-4d28-8a90-36a18c8efa56": {
+      "type": "spacer",
+      "blocks": {
+        "template--17538998665536__2348c060-bf19-4d28-8a90-36a18c8efa56-167337563857d4da42-0": {
+          "type": "spacer-block",
+          "settings": {
+            "spacer-height": 105
+          }
+        }
+      },
+      "block_order": [
+        "template--17538998665536__2348c060-bf19-4d28-8a90-36a18c8efa56-167337563857d4da42-0"
+      ],
+      "settings": {
       }
     },
     "03bd5f5a-78bb-4d0c-9d51-6e849fa468f9": {
@@ -157,6 +175,7 @@
     "main",
     "newsletter",
     "9848236e-10d5-4dde-8917-913bfa0349d2",
+    "2348c060-bf19-4d28-8a90-36a18c8efa56",
     "03bd5f5a-78bb-4d0c-9d51-6e849fa468f9"
   ]
 }
