@@ -323,6 +323,69 @@
         "faq_title": "Frequently Asked Questions",
         "faq_description": "You can ask about your desire."
       }
+    },
+    "ecfb5f2b-0dff-484b-b6e1-32f8508d88da": {
+      "type": "taskOne",
+      "blocks": {
+        "template--17420592283968__ecfb5f2b-0dff-484b-b6e1-32f8508d88da-16733261744e98900c-0": {
+          "type": "headLine",
+          "settings": {
+            "headLine": "<p>404- Not Found<\/p>",
+            "font-size": 32,
+            "mobile-font-size": 20,
+            "line-height": 16,
+            "mobile-line-height": 16,
+            "letter-spacing": 1,
+            "mobile-letter-spacing": 1,
+            "font-family": "",
+            "text-color": "#FFFFFF",
+            "mobile-font-family": "",
+            "mobile-text-color": "#FFFFFF",
+            "text-block-width": "medium",
+            "custom-block-width": 800,
+            "align_text": "center"
+          }
+        },
+        "template--17420592283968__ecfb5f2b-0dff-484b-b6e1-32f8508d88da-16733261744e98900c-1": {
+          "type": "imageSection",
+          "settings": {
+            "align_image": "cover",
+            "width": 400,
+            "height": 500,
+            "alignment": "center"
+          }
+        },
+        "template--17420592283968__ecfb5f2b-0dff-484b-b6e1-32f8508d88da-16733261744e98900c-2": {
+          "type": "textForShow",
+          "settings": {
+            "textForShowFirstLine": "Oops, it looks like the page you are looking for is no longer here...",
+            "textForShowSecondLine": "Choose one of the links below or",
+            "textForShow-anchor": "\/",
+            "textForShow-anchorText": "click here to return home.",
+            "font-size": 16,
+            "mobile-font-size": 10,
+            "line-height": 16,
+            "mobile-line-height": 16,
+            "text-indent": 0,
+            "letter-spacing": 1,
+            "font-family": "",
+            "text-color": "#FFFFFF",
+            "mobile-font-family": "",
+            "mobile-text-color": "#FFFFFF",
+            "anchorText-color": "#FFFF00",
+            "cursor": "auto",
+            "text-decoration": "underline overline",
+            "align_text": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--17420592283968__ecfb5f2b-0dff-484b-b6e1-32f8508d88da-16733261744e98900c-0",
+        "template--17420592283968__ecfb5f2b-0dff-484b-b6e1-32f8508d88da-16733261744e98900c-1",
+        "template--17420592283968__ecfb5f2b-0dff-484b-b6e1-32f8508d88da-16733261744e98900c-2"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -333,6 +396,7 @@
     "multicolumn",
     "collapsible-content",
     "newsletter",
-    "fef46b69-b1ae-42a1-ab64-29e87e637a48"
+    "fef46b69-b1ae-42a1-ab64-29e87e637a48",
+    "ecfb5f2b-0dff-484b-b6e1-32f8508d88da"
   ]
 }
