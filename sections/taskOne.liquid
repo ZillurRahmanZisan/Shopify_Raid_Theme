@@ -3,9 +3,9 @@
     {% case block.type %}
       {% when 'headLine' %}
         <div class="headLine-{{ block.id }}">
-          <p class="headLine-{{ block.id }}-width-{{ block.settings.text-block-width }}">
+          <div class="headLine-{{ block.id }}-width-{{ block.settings.text-block-width }}">
             {{ block.settings.headLine }}
-          </p>
+          </div>
         </div>
 
       {% when 'imageSection' %}
