@@ -20,6 +20,8 @@
             {{ block.settings.imageSectionText }}
           </div>
         {% endif %}
+      {% when 'spacer-block' %}
+        <div class="spacer-{{ block.id }}"></div>
     {% endcase %}
   {% endfor %}
 </section>
@@ -72,6 +74,11 @@
      text-align:{{block.settings.align_text}};
     margin:{{block.settings.margin}}px;
   }
+
+   {% when 'spacer-block' %}
+        .spacer-{{block.id}}{
+          height:{{ block.settings.spacer-height}}px;
+        }
 
           {% endcase %}
 
@@ -288,13 +295,31 @@
            "default": 0
          }]
 
-     }
+     },
+      {
+        "name": "Spacer",
+       "type": "spacer-block",
+       "settings": [
+          {
+            "type": "range",
+           "id":"spacer-height",
+           "label":"Spacer Height",
+           "min": 0,
+           "max": 200,
+           "step": 5,
+           "unit": "px",
+           "default": 30
+          }
+         ]}
     ],
     "presets": [
 	{ "name": "Blog Image First",
     "blocks": [
         {
           "type": "imageSection"
+        },
+        {
+          "type":"spacer-block"
         }
       ]}
 ]
