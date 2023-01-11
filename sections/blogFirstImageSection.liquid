@@ -8,15 +8,18 @@
               class="imageSection-{{ block.id }}-width"
               src="https://cdn.shopify.com/s/files/1/0575/9575/6709/files/404-Image-min.jpg?v=1655291164"
             >
+            <div class="imageSectionText-{{ block.id }}">
+              {{ block.settings.imageSectionText }}
+            </div>
           </div>
         {% else %}
           <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
             <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
           </div>
+          <div class="imageSectionText-{{ block.id }}">
+            {{ block.settings.imageSectionText }}
+          </div>
         {% endif %}
-        <div class="imageSectionText-{{ block.id }}">
-          {{ block.settings.imageSectionText }}
-        </div>
     {% endcase %}
   {% endfor %}
 </section>
