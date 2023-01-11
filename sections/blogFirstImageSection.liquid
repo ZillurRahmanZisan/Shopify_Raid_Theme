@@ -1,7 +1,300 @@
+<section class="section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'imageSection' %}
+        {% if block.settings.upload_image == blank %}
+          <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
+            <img
+              class="imageSection-{{ block.id }}-width"
+              src="https://cdn.shopify.com/s/files/1/0575/9575/6709/files/404-Image-min.jpg?v=1655291164"
+            >
+          </div>
+        {% else %}
+          <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
+            <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+          </div>
+        {% endif %}
+        <div class="imageSectionText-{{ block.id }}">
+          {{ block.settings.imageSectionText }}
+        </div>
+    {% endcase %}
+  {% endfor %}
+</section>
+
+<style>
+    .section-wrapper-{{ section.id }}-width-small{
+      max-width: 600px;
+      margin:0 auto;
+      background-color: aliceblue;
+    }
+    .section-wrapper-{{ section.id }}-width-medium{
+      max-width: 967px;
+      margin:0 auto;
+      background-color: aliceblue;
+    }
+    .section-wrapper-{{ section.id }}-width-large{
+      max-width: 100%;
+      background-color: aliceblue;
+    }
+    .section-wrapper-{{ section.id }}-width-custom{
+      max-width: {{section.settings.custom-block-width | append: "px"}};
+      margin:0 auto;
+      background-color: aliceblue;
+    }
+
+
+     {% for block in section.blocks %}
+
+        {% case block.type %}
+                {% when "imageSection" %}
+          .imageSection-{{ block.id }}-width{
+            max-width:1140px;
+            width: {{block.settings.width}}px;
+            object-fit:{{block.settings.align_image}};
+            height:{{block.settings.height}}px;
+          }
+
+    .imageSectionText-{{ block.id }} p{
+      font-size:{{block.settings.font-size | append:"px"}};
+          font-family: {{block.settings.font-family}};
+          line-height: {{block.settings.line-height}}px;
+          color: {{block.settings.text-color}};
+          letter-spacing:{{ block.settings.letter-spacing }}px;
+      margin:{{block.settings.margin}}px;
+    }
+    .imageSectionText-{{ block.id }} p span{
+      text-decoration: {{ block.settings.text-decoration }};
+    }
+  .imageSectionText-{{ block.id }}{
+     text-align:{{block.settings.align_text}};
+    margin:{{block.settings.margin}}px;
+  }
+
+          {% endcase %}
+
+        {% endfor %}
+</style>
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Blog Image",
+    "settings": [
+        {
+         "type": "select",
+           "id":"image-block-width",
+           "label":"Width of Blog Image",
+           "options":[
+             {
+               "value":"small",
+               "label":"Small"
+             },
+             {
+               "value":"medium",
+               "label":"Medium"
+             },
+             {
+               "value":"large",
+               "label":"Large"
+             },
+             {
+               "value":"custom",
+               "label":"Custom"
+             }
+           ],
+           "default": "medium"
+         },
+         {
+         "type": "range",
+           "id":"custom-block-width",
+           "label":"Change your blog Width",
+           "min": 100,
+           "max": 2000,
+           "step": 50,
+           "unit": "px",
+           "default": 800
+         }
+       ],
+    "blocks":[
+      {
+       "name": "Image",
+       "type": "imageSection",
+       "settings":[
+         {
+           "type": "image_picker",
+           "id": "upload_image",
+           "label":"Change Your Image"
+         },
+         {
+         "type": "range",
+           "id":"width",
+           "label":"Image Width",
+           "min": 200,
+           "max": 2000,
+           "step": 100,
+           "unit": "px",
+           "default": 400
+         },
+          {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+       ,
+        {
+           "type": "richtext",
+           "id": "imageSectionText",
+           "label":"Change the Image Text",
+           "default":"<p>Model wears <span>Whiting Shirt Cosmic Papaya Check</span> with <span>Dean T Shirt Black</span> and <span>Pleat Trousers Black</span></p>"
+         },
+      {
+         "type": "range",
+           "id":"font-size",
+           "label":"Font Size",
+           "min": 10,
+           "max": 50,
+           "step": 1,
+           "unit": "px",
+           "default": 16
+         },
+      {
+         "type": "range",
+           "id":"mobile-font-size",
+           "label":"Font Size For Mobile Device",
+           "min": 8,
+           "max": 40,
+           "step": 1,
+           "unit": "px",
+           "default": 10
+         },
+          {
+         "type": "range",
+           "id":"line-height",
+           "label":"Line Height",
+           "min": 0,
+           "max": 80,
+           "step": 2,
+           "unit": "px",
+           "default": 0
+         },
+         {
+         "type": "range",
+           "id":"mobile-line-height",
+           "label":"Line Height For Mobile",
+           "min": 0,
+           "max": 80,
+           "step": 2,
+           "unit": "px",
+           "default": 0
+         },
+         {
+         "type": "range",
+           "id":"letter-spacing",
+           "label":"Letter Spacing",
+           "min": 1,
+           "max": 10,
+           "step": 0.5,
+           "unit": "px",
+           "default": 1
+         },
+         {
+         "type": "font",
+           "id":"font-family",
+           "label":"Font Family"
+         },
+         {
+         "type": "color",
+           "id":"text-color",
+           "label":"Text Color",
+           "default": "#FFFFFF"
+         },
+         {
+         "type": "font",
+           "id":"mobile-font-family",
+           "label":"Font Family For Mobile"
+         },
+         {
+         "type": "color",
+           "id":"mobile-text-color",
+           "label":"Text Color For Mobile",
+           "default": "#FFFFFF"
+         },
+         {
+         "type": "select",
+           "id":"text-decoration",
+           "label":"Anchor Text Decoration",
+           "options":[
+             {
+               "value":"overline",
+               "label":"Overline"
+             },
+             {
+               "value":"line-through",
+               "label":"Line-through"
+             },
+             {
+               "value":"underline",
+               "label":"Underline"
+             },
+             {
+               "value":"underline overline",
+               "label":"Underline and Overline"
+             }],
+         "default":"underline"},
+          {
+         "type": "select",
+           "id":"align_text",
+           "label":"Text Alignment",
+           "options":[
+             {
+               "value":"left",
+               "label":"Left"
+             },
+             {
+               "value":"center",
+               "label":"Center"
+             },
+             {
+               "value":"right",
+               "label":"Right"
+             }
+           ],
+           "default": "left"
+         },
+      {
+         "type": "range",
+           "id":"margin",
+           "label":"Text Margin",
+           "min": 0,
+           "max": 200,
+           "step": 2,
+           "unit": "px",
+           "default": 0
+         }]
+
+     }
+    ],
+    "presets": [
+	{ "name": "Blog Image First",
+    "blocks": [
+        {
+          "type": "imageSection"
+        }
+      ]}
+]
   }
 {% endschema %}
 
