@@ -7,6 +7,7 @@
           "type": "firstParagraph",
           "settings": {
             "firstParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "padding": 10,
             "font-size": 24,
             "mobile-font-size": 20,
             "line-height": 30,
@@ -26,6 +27,7 @@
           "type": "secondParagraph",
           "settings": {
             "secondParagraph": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu euismod ante, quis finibus odio. Aenean scelerisque consectetur pharetra. In condimentum est eu eros malesuada aliquam.<\/p>",
+            "padding": 10,
             "font-size": 18,
             "mobile-font-size": 20,
             "line-height": 30,
@@ -110,10 +112,60 @@
         "display": "flex",
         "gap": 20
       }
+    },
+    "9309a677-2a6d-4cb5-a0e6-11e928362429": {
+      "type": "spacer",
+      "blocks": {
+        "template--17538998665536__9309a677-2a6d-4cb5-a0e6-11e928362429-16733992892c71caa0-0": {
+          "type": "spacer-block",
+          "settings": {
+            "spacer-height": 30
+          }
+        }
+      },
+      "block_order": [
+        "template--17538998665536__9309a677-2a6d-4cb5-a0e6-11e928362429-16733992892c71caa0-0"
+      ],
+      "settings": {
+      }
+    },
+    "007331ef-3f04-4419-8135-6ad29b9a07c0": {
+      "type": "blogFirstImageSection",
+      "blocks": {
+        "template--17538998665536__007331ef-3f04-4419-8135-6ad29b9a07c0-1673399215b2f41c23-0": {
+          "type": "imageSection",
+          "settings": {
+            "width": 400,
+            "alignment": "center",
+            "imageSectionText": "<p>Model wears <span>Whiting Shirt Cosmic Papaya Check<\/span> with <span>Dean T Shirt Black<\/span> and <span>Pleat Trousers Black<\/span><\/p>",
+            "font-size": 16,
+            "mobile-font-size": 10,
+            "line-height": 0,
+            "mobile-line-height": 0,
+            "letter-spacing": 1,
+            "font-family": "",
+            "text-color": "#FFFFFF",
+            "mobile-font-family": "",
+            "mobile-text-color": "#FFFFFF",
+            "text-decoration": "underline",
+            "align_text": "left",
+            "margin": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--17538998665536__007331ef-3f04-4419-8135-6ad29b9a07c0-1673399215b2f41c23-0"
+      ],
+      "settings": {
+        "image-block-width": "medium",
+        "custom-block-width": 800
+      }
     }
   },
   "order": [
     "9848236e-10d5-4dde-8917-913bfa0349d2",
-    "03bd5f5a-78bb-4d0c-9d51-6e849fa468f9"
+    "03bd5f5a-78bb-4d0c-9d51-6e849fa468f9",
+    "9309a677-2a6d-4cb5-a0e6-11e928362429",
+    "007331ef-3f04-4419-8135-6ad29b9a07c0"
   ]
 }
