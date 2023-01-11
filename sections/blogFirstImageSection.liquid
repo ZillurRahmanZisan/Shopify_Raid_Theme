@@ -53,10 +53,7 @@
         {% case block.type %}
                 {% when "imageSection" %}
           .imageSection-{{ block.id }}-width{
-            max-width:1140px;
             width: {{block.settings.width}}px;
-            object-fit:{{block.settings.align_image}};
-            height:{{block.settings.height}}px;
           }
 
     .imageSectionText-{{ block.id }} p{
@@ -141,7 +138,7 @@
            "max": 2000,
            "step": 100,
            "unit": "px",
-           "default": 400
+           "default": 600
          },
           {
           "type": "select",
