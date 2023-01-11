@@ -135,18 +135,18 @@
         "template--17538998665536__007331ef-3f04-4419-8135-6ad29b9a07c0-1673399215b2f41c23-0": {
           "type": "imageSection",
           "settings": {
-            "width": 400,
+            "width": 600,
             "alignment": "center",
-            "imageSectionText": "<p>Model wears <span>Whiting Shirt Cosmic Papaya Check<\/span> with <span>Dean T Shirt Black<\/span> and <span>Pleat Trousers Black<\/span><\/p>",
-            "font-size": 16,
+            "imageSectionText": "<p>Model wears Whiting Shirt Cosmic Papaya Check with Dean T Shirt Black and Pleat Trousers Black<\/p>",
+            "font-size": 11,
             "mobile-font-size": 10,
-            "line-height": 0,
+            "line-height": 10,
             "mobile-line-height": 0,
             "letter-spacing": 1,
             "font-family": "",
-            "text-color": "#FFFFFF",
+            "text-color": "#1f1f21",
             "mobile-font-family": "",
-            "mobile-text-color": "#FFFFFF",
+            "mobile-text-color": "#ffffff",
             "text-decoration": "underline",
             "align_text": "left",
             "margin": 0
@@ -157,7 +157,7 @@
         "template--17538998665536__007331ef-3f04-4419-8135-6ad29b9a07c0-1673399215b2f41c23-0"
       ],
       "settings": {
-        "image-block-width": "medium",
+        "image-block-width": "small",
         "custom-block-width": 800
       }
     }
