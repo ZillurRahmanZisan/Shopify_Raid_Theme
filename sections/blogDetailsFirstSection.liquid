@@ -1,4 +1,4 @@
-<section class="section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
+<section class="section-wrapper-{{ section.id }} section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'firstParagraph' %}
@@ -10,7 +10,9 @@
           {{ block.settings.secondParagraph }}
         </div>
       {% when 'spacer-block' %}
-        <div class="spacer-{{ block.id }}"></div>
+        <div class="spacer-{{ block.id }}">
+          
+        </div>
     {% endcase %}
   {% endfor %}
 </section>
@@ -35,9 +37,17 @@
     margin:0 auto;
     background-color: aliceblue;
   }
-  .section-wrapper-{{ section.id }}-width-large p{
-    padding: 0 32px;
+
+  {% if section.settings.flip-position==false %}
+  .section-wrapper-{{ section.id }}{
+    display:block;
   }
+  {% else %}
+  .section-wrapper-{{ section.id }}{
+    display:flex;
+    gap:{{section.settings.gap}}px;
+  }
+{% endif %}
 
     {% for block in section.blocks %}
 
@@ -105,7 +115,7 @@
 
 {% schema %}
   {
-    "name": "Blog Details ",
+    "name": "Multi-Text Section ",
        "settings": [
         {
          "type": "select",
@@ -140,6 +150,21 @@
            "step": 50,
            "unit": "px",
            "default": 800
+         },{
+          "type": "checkbox",
+          "id":"flip-position",
+          "label": "Display Settings",
+          "default": false
+         },
+         {
+         "type": "range",
+           "id":"gap",
+           "label":"Gap Between Paragraph",
+           "min": 10,
+           "max": 100,
+           "step": 5,
+           "unit": "px",
+           "default": 20
          }
        ],
 

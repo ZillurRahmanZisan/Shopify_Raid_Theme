@@ -2,7 +2,10 @@
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'spacer-block' %}
-        <div class="spacer-{{ block.id }}"></div>
+      <div class="spacer-{{ block.id }}">
+
+
+      </div>
     {% endcase %}
   {% endfor %}
 </section>
@@ -12,43 +15,46 @@
 
     {% case block.type %}
 
-    {% when 'spacer-block' %}
-      .section-wrapper-{{ section.id }} .spacer-{{block.id}}{
-        height:{{ block.settings.spacer-height}}px;
+      {% when 'spacer-block' %}
+      .section-wrapper-{{ section.id }} .spacer-{{ block.id }}{
+        height: {{ block.settings.spacer-height }}px;
       }
 
     {% endcase %}
 
-    {% endfor %}
+  {% endfor %}
 </style>
 
 {% schema %}
-{
-  "name": "Section Spacer",
-  "blocks": [
-    {
-      "name": "Spacer",
-     "type": "spacer-block",
-     "settings": [
-        {
-          "type": "range",
-         "id":"spacer-height",
-         "label":"Spacer Height",
-         "min": 0,
-         "max": 200,
-         "step": 5,
-         "unit": "px",
-         "default": 30
-        }
-       ]}
-  ],
-  "presets": [
-	{ "name": "Section Spacer",
+  {
+    "name": "Section Spacer",
     "blocks": [
-        {
-          "type":"spacer-block"
-        }
-      ]}
-]
-}
+      {
+        "name": "Spacer",
+        "type": "spacer-block",
+        "settings": [
+          {
+            "type": "range",
+            "id": "spacer-height",
+            "label": "Spacer Height",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "default": 30
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Section Spacer",
+        "blocks": [
+          {
+            "type": "spacer-block"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

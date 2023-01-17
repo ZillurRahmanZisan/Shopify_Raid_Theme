@@ -1,0 +1,196 @@
+<section class="section-wrapper-{{ section.id }}-width-{{ section.settings.text-block-width }}">
+  {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'blog-details' %}
+        <div class="blog-details-{{ block.id }}">
+            <p class="blog-title">
+                {{ blog.title }}
+            </p>
+  
+        </div>
+      {% when 'spacer-block' %}
+      <div class="spacer-{{ block.id }}">
+
+
+      </div>
+    {% endcase %}
+  {% endfor %}
+</section>
+
+<style>
+
+.section-wrapper-{{ section.id }}-width-small{
+    max-width: 600px;
+    margin:0 auto;
+    background-color: aliceblue;
+  }
+  .section-wrapper-{{ section.id }}-width-medium{
+    max-width: 967px;
+    margin:0 auto;
+    background-color: aliceblue;
+  }
+  .section-wrapper-{{ section.id }}-width-large{
+    max-width: 100%;
+    background-color: aliceblue;
+  }
+  .section-wrapper-{{ section.id }}-width-custom{
+    max-width: {{section.settings.custom-block-width | append: "px"}};
+    margin:0 auto;
+    background-color: aliceblue;
+  }
+
+  {% for block in section.blocks %}
+
+    {% case block.type %}
+
+    {% when 'blog-details' %}
+        .blog-details-{{ block.id }} .blog-title{
+            font-family: 'Silvana';
+            font-style: normal;
+            font-weight: 400;
+            font-size: {{ block.settings.font-size }}px;
+            text-align: {{ block.settings.align_text }};
+            letter-spacing: 0px;
+            font-feature-settings: 'ordn' on;
+            color: {{ block.settings.text-color }};
+        }
+
+      {% when 'spacer-block' %}
+      .section-wrapper-{{ section.id }} .spacer-{{ block.id }}{
+        height: {{ block.settings.spacer-height }}px;
+      }
+
+    {% endcase %}
+
+  {% endfor %}
+</style>
+
+{% schema %}
+  {
+    "name": "Blog Details",
+    "settings": [
+        {
+         "type": "select",
+           "id":"text-block-width",
+           "label":"Width of Blog Details",
+           "options":[
+             {
+               "value":"small",
+               "label":"Small"
+             },
+             {
+               "value":"medium",
+               "label":"Medium"
+             },
+             {
+               "value":"large",
+               "label":"Large"
+             },
+             {
+               "value":"custom",
+               "label":"Custom"
+             }
+           ],
+           "default": "small"
+         },
+         {
+         "type": "range",
+           "id":"custom-block-width",
+           "label":"Change your blog Width",
+           "min": 100,
+           "max": 2000,
+           "step": 50,
+           "unit": "px",
+           "default": 800
+         },{
+          "type": "checkbox",
+          "id":"flip-position",
+          "label": "Display Settings",
+          "default": false
+         },
+         {
+         "type": "range",
+           "id":"gap",
+           "label":"Gap Between Paragraph",
+           "min": 10,
+           "max": 100,
+           "step": 5,
+           "unit": "px",
+           "default": 20
+         }
+       ],
+    "blocks": [
+        {
+        "name": "Blog Details",
+        "type": "blog-details",
+        "settings": [
+         {
+         "type": "range",
+           "id":"font-size",
+           "label":"Font Size",
+           "min": 50,
+           "max": 200,
+           "step": 10,
+           "unit": "px",
+           "default": 50
+         },{
+         "type": "color",
+           "id":"text-color",
+           "label":"Text Color",
+           "default": "#333333"
+         },
+          {
+         "type": "select",
+           "id":"align_text",
+           "label":"Text Alignment",
+           "options":[
+             {
+               "value":"left",
+               "label":"Left"
+             },
+             {
+               "value":"center",
+               "label":"Center"
+             },
+             {
+               "value":"right",
+               "label":"Right"
+             }
+           ],
+           "default": "center"
+         }
+
+        ]
+        },
+      {
+        "name": "Spacer",
+        "type": "spacer-block",
+        "settings": [
+          {
+            "type": "range",
+            "id": "spacer-height",
+            "label": "Spacer Height",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "default": 30
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog Details",
+        "blocks": [
+          {
+            "type": "blog-details"
+          },
+          {
+            "type": "spacer-block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

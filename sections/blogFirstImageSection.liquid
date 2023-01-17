@@ -2,26 +2,24 @@
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'imageSection' %}
-        {% if block.settings.upload_image == blank %}
           <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
-            <img
-              class="imageSection-{{ block.id }}-width"
+            {% if block.settings.upload_image == blank %}
+            <img loading="lazy" alt="" width="" height=""
+              class="imageSection-{{ block.id }}-width-{{ section.settings.image-block-width }}"
               src="https://cdn.shopify.com/s/files/1/0575/9575/6709/files/404-Image-min.jpg?v=1655291164"
             >
+            {% else %}
+            <img loading="lazy" alt="" width="" height="" class="imageSection-{{ block.id }}-width-{{ section.settings.image-block-width }}" src="{{ block.settings.upload_image | img_url:"200x200"}}">
+          {% endif %}
             <div class="imageSectionText-{{ block.id }}">
               {{ block.settings.imageSectionText }}
             </div>
           </div>
-        {% else %}
-          <div class="imageSection-{{ block.id }} {{ block.settings.alignment }}">
-            <img class="imageSection-{{ block.id }}-width" src="{{ block.settings.upload_image | img_url:"200x200"}}">
-          </div>
-          <div class="imageSectionText-{{ block.id }}">
-            {{ block.settings.imageSectionText }}
-          </div>
-        {% endif %}
+        
       {% when 'spacer-block' %}
-        <div class="spacer-{{ block.id }}"></div>
+        <div class="spacer-{{ block.id }}">
+
+        </div>
     {% endcase %}
   {% endfor %}
 </section>
@@ -52,9 +50,18 @@
 
         {% case block.type %}
                 {% when "imageSection" %}
-          .imageSection-{{ block.id }}-width{
-            width: {{block.settings.width}}px;
-          }
+                  .imageSection-{{ block.id }}-width-small{
+                    width: 600px;
+                  }
+                  .imageSection-{{ block.id }}-width-medium{
+                    width: 967px;
+                  }
+                  .imageSection-{{ block.id }}-width-large{
+                    width: 100%;
+                  }
+                  .imageSection-{{ block.id }}-width-custom{
+                    width: {{section.settings.custom-image-width | append: "px"}}
+                  }
 
     .imageSectionText-{{ block.id }} p{
       font-size:{{block.settings.font-size | append:"px"}};
@@ -83,7 +90,7 @@
 </style>
 {% schema %}
   {
-    "name": "Blog Image",
+    "name": "Blog Image With Text",
     "settings": [
         {
          "type": "select",
@@ -131,12 +138,24 @@
            "label":"Change Your Image"
          },
          {
+         "type": "select",
+           "id":"image-width",
+           "label":"Width of Image",
+           "options":[
+             {
+               "value":"custom",
+               "label":"Custom"
+             }
+           ],
+           "default": "custom"
+         },
+         {
          "type": "range",
-           "id":"width",
-           "label":"Image Width",
-           "min": 200,
+           "id":"custom-image-width",
+           "label":"Change your Image Width",
+           "min": 100,
            "max": 2000,
-           "step": 100,
+           "step": 50,
            "unit": "px",
            "default": 600
          },
@@ -226,7 +245,7 @@
          "type": "color",
            "id":"text-color",
            "label":"Text Color",
-           "default": "#FFFFFF"
+           "default": "#333333"
          },
          {
          "type": "font",
@@ -237,7 +256,7 @@
          "type": "color",
            "id":"mobile-text-color",
            "label":"Text Color For Mobile",
-           "default": "#FFFFFF"
+           "default": "#333333"
          },
          {
          "type": "select",
@@ -310,7 +329,7 @@
          ]}
     ],
     "presets": [
-	{ "name": "Blog Image First",
+	{ "name": "Blog SIngle Image-Text",
     "blocks": [
         {
           "type": "imageSection"
