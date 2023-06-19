@@ -19,7 +19,7 @@
             <div class="product-slider-image">
               <ul class="slider-component-main slider-ul-main">
         <script>
-        console.log({{block.settings.product.variants}})
+        console.log({{block.settings.product.variants | json}})
 </script>
                 {% for variant in block.settings.product.variants %}
                   <li class="slide-component-main slide-image {% if forloop.index0 != 0 %} display_hide {% endif %}">
