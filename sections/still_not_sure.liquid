@@ -1,0 +1,158 @@
+<section class="still-not-sure-{{ section.id }}">
+  <div class="still_not_sure_image_one">
+    <img
+      class="desktop"
+      src="{{ section.settings.still_not_image_one_desktop | img_url: 'master' }}"
+      alt="Still Not Sure"
+    >
+    <img
+      class="mobile"
+      src="{{ section.settings.still_not_image_one_mobile | img_url: 'master' }}"
+      alt="Still Not Sure"
+    >
+  </div>
+  <div class="still_not_sure_image_two">
+    <img
+      class="desktop"
+      src="{{ section.settings.still_not_image_two_desktop | img_url: 'master' }}"
+      alt="Still Not Sure"
+    >
+    <img
+      class="mobile"
+      src="{{ section.settings.still_not_image_two_mobile | img_url: 'master' }}"
+      alt="Still Not Sure"
+    >
+  </div>
+  <div class="still_not_sure_text">
+    <p>{{ section.settings.still_not_sure_text }}</p>
+    <a href="{{ section.settings.earplug_quiz }}">{{ section.settings['button-text'] }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Still Not Sure",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "still_not_image_one_desktop",
+      "label": "Left Side Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "still_not_image_one_mobile",
+      "label": "Left Side Image Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "still_not_image_two_desktop",
+      "label": "Right Side Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "still_not_image_two_mobile",
+      "label": "Right Side Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "still_not_sure_text",
+      "label": "Headline",
+      "default": "Still not sure?"
+    },
+    {
+      "type": "text",
+      "id": "button-text",
+      "label": "Button Text",
+      "default": "Take the earplug quiz"
+    },
+    {
+      "type": "url",
+      "id": "earplug_quiz",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Still Not Sure"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .still-not-sure-{{ section.id }}{
+    position:relative;
+    height:401px;
+    background-color:#BCBAB8;
+  }
+
+  .still-not-sure-{{ section.id }} .still_not_sure_image_one{
+    position:absolute;
+    top:0;
+    left:0;
+  }
+  .still-not-sure-{{ section.id }} .still_not_sure_image_two{
+    position:absolute;
+    bottom:0;
+    right:0;
+  }
+
+  .still-not-sure-{{ section.id }} .still_not_sure_image_one .desktop,.still-not-sure-{{ section.id }} .still_not_sure_image_two .desktop{
+    display: block;
+  }
+  .still-not-sure-{{ section.id }} .still_not_sure_image_one .mobile,.still-not-sure-{{ section.id }} .still_not_sure_image_two .mobile{
+    display: none;
+  }
+
+  .still-not-sure-{{ section.id }} .still_not_sure_text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding: 103px 0;
+    position: relative;
+    z-index: 3;
+  }
+
+  .still-not-sure-{{ section.id }} .still_not_sure_text p{
+    font-family: "Avantt";
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 48px;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 40px;
+    color:#252427;
+    text-align: center;
+    margin:0;
+    margin-bottom: 30px;
+  }
+  .still-not-sure-{{ section.id }} .still_not_sure_text a{
+    font-family: "Avantt";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    padding: 17px 50px;
+    display: inline-block;
+    background-color: #4E26B8;
+    color:#FFFFFF;
+    border: 1px solid #6243B9;
+    border-radius:40px;
+    text-decoration:none;
+  }
+
+  @media screen and (max-width: 749px) {
+
+  .still-not-sure-{{ section.id }}{
+    height:365px;
+  }
+
+  .still-not-sure-{{ section.id }} .still_not_sure_image_one .desktop,.still-not-sure-{{ section.id }} .still_not_sure_image_two .desktop{
+    display: none;
+  }
+  .still-not-sure-{{ section.id }} .still_not_sure_image_one .mobile,.still-not-sure-{{ section.id }} .still_not_sure_image_two .mobile{
+    display: block;
+  }
+  }
+</style>
