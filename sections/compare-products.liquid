@@ -1,12 +1,1472 @@
+<section class="comparison-loop-{{ section.id }}">
+  <header id="compare-sticky-header" class="header-{{section.id}} ">
+    <div class="header-main scroll-along">
+      {% for block in section.blocks %}
+        <div class="product-main ">
+          <p class="product-title">{{ block.settings.product.title }}</p>
+          <p class="product-price">€{{ block.settings.product.price | times: 0.01 }}</p>
+          <a class="product-link" href="{{block.settings.product.url}}">Buy now →</a>
+        </div>
+      {% endfor %}
+    </div>
+  </header>
+
+  <main class="main-{{ section.id }}" data-ref="slider-main-component">
+    <div class="slider-main-{{ section.id}} scroll-along">
+      {% for block in section.blocks %}
+        <div class="silder-main">
+          <div class="product-slider-main product-image-change-main">
+            <div class="product-slider-image">
+              <ul class="slider-component-main slider-ul-main">
+                {% for variant in block.settings.product.variants %}
+                  <li class="slide-component-main slide-image {% if forloop.index0 != 0 %} display_hide {% endif %}">
+                    <img src="{{ variant.featured_image | img_url: 'master'}}" alt="{{ variant.title }}">
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <div
+              class="product-variant-color"
+              style="--widthA : calc(24 * {{ block.settings.product.variants | size}}px); --widthB : calc(13 * {{ block.settings.product.variants | size}}px);"
+            >
+              {%- for variant in block.settings.product.variants -%}
+                <input
+                  type="radio"
+                  id="{{ section.id }}-{{ variant.featured_image.position }}-{{ forloop.index0 }}-{{ block.settings.product.title}}"
+                  name="{{ block.settings.product.title | downcase }}"
+                  value="{{ variant.title }}"
+                  form="{{ variant.id }}"
+                >
+                {% assign value_slug = variant.title | downcase | replace: ' ', '-' %}
+                {% if shop.metaobjects.color_swatches[value_slug] %}
+                  <label
+                    for="{{ section.id }}-{{ variant.featured_image.position }}-{{ forloop.index0 }}-{{ block.settings.product.title}}"
+                    class="v-swatch {% if forloop.index0 == 0 %} active {% endif %}"
+                    style="background-image: url({{ shop.metaobjects.color_swatches[value_slug].image | img_url: '50x' }}); background-color: {{ shop.metaobjects.color_swatches[value_slug].color }};"
+                  >
+                  </label>
+                {% else %}
+                  <label for="{{ section.id }}-{{ variant.featured_image.position }}-{{ forloop.index0 }}-{{ block.settings.product.title}}">
+                    {{ variant.featured_image.position }}
+                  </label>
+                {% endif %}
+              {%- endfor -%}
+            </div>
+
+            <div class="product_price_main">
+              <p class="product-price">€{{ block.settings.product.price | times: 0.01 }}</p>
+            </div>
+
+            <div class="product-add-to-cart-main">
+              {%- for variant in block.settings.product.variants -%}
+                {% if forloop.index0 == 0 %}
+                  <input id="add-to-button-input" value="{{ variant.id }}">
+                {% endif %}
+              {% endfor %}
+              <button
+                name="add"
+                class="product-form__submit button button--full-width button--primary add-to-cart-button"
+                data-oos="0"
+              >
+                <span>Buy Now</span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="spinner"
+                    viewBox="0 0 66 66"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </button>
+            </div>
+
+            <div class="product-returns">{{ block.settings.product_returns_text }}</div>
+
+            <div class="product-page-link">
+              <a class="product-link" href="{{ block.settings.product.url }}">Learn More →</a>
+            </div>
+
+            <div class="product-description-main">
+              <div class="product-title">{{ block.settings.product_description_title }}</div>
+              <div class="product-desc">{{ block.settings.product_description_description }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings['first-row'] %}
+      <div class="product-best-used">
+        <p class="title">{{ section.settings['first-row-title'] }}</p>
+        <div class="best-used-details scroll-along">
+          {% for block in section.blocks %}
+            <div class="best-used-location-main">
+              <p>{{ block.settings['best-used-title'] }}</p>
+              <div class="best-used-location-svg">
+                <img
+                  src="{{ block.settings.image_best_used | img_url }}"
+                  alt="{{ bock.settings.product.title }} Used Location"
+                >
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['second-row'] -%}
+      <div class="product-perfect-for">
+        <p class="title">{{ section.settings['second-row-title'] }}</p>
+        <div class="perfect-for-details scroll-along">
+          {% for block in section.blocks %}
+            <div class="perfect-for-location-main">
+              <div class="perfect-for-location-one">
+                <div class="perfect-for-location-svg">
+                  <img
+                    src="{{ block.settings.image_perfect_for_one |img_url }}"
+                    alt="{{ bock.settings.product.title }} Perfect Location "
+                  >
+                </div>
+                <p>{{ block.settings['perfect-for-title_one'] }}</p>
+              </div>
+              <div class="perfect-for-location-two">
+                <div class="perfect-for-location-svg">
+                  <img
+                    src="{{ block.settings.image_perfect_for_two |img_url }}"
+                    alt="{{ bock.settings.product.title }} Perfect Location "
+                  >
+                </div>
+                <p>{{ block.settings['perfect-for-title_two'] }}</p>
+              </div>
+              <div class="perfect-for-location-three">
+                <div class="perfect-for-location-svg">
+                  <img
+                    src="{{ block.settings.image_perfect_for_three |img_url }}"
+                    alt="{{ bock.settings.product.title }} Perfect Location "
+                  >
+                </div>
+                <p>{{ block.settings['perfect-for-title_three'] }}</p>
+              </div>
+              <div class="perfect-for-location-four">
+                <div class="perfect-for-location-svg">
+                  <img
+                    src="{{ block.settings.image_perfect_for_four |img_url }}"
+                    alt="{{ bock.settings.product.title }} Perfect Location "
+                  >
+                </div>
+                <p>{{ block.settings['perfect-for-title_four'] }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['third-row'] %}
+      <div class="product-noise-reduction">
+        <p class="title">{{ section.settings['third-row-title'] }}</p>
+        <div class="noise-reduction-details scroll-along">
+          {% for block in section.blocks %}
+            <div class="noise-reduction-location-main">
+              up to
+              <p class="noise_decibel">{{ block.settings['noise-reduction-details'] }}</p>
+              noise reduction
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['fourth-row'] %}
+      <div class="product-filter-for">
+        <p class="title">{{ section.settings['fourth-row-title'] }}</p>
+        <div class="filter-for-details scroll-along">
+          {% for block in section.blocks %}
+            <div class="filter-for-location-main">
+              {{ block.settings['filter-for-details'] }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['fifth-row'] %}
+      <div class="product-certified-hearing">
+        <p class="title">{{ section.settings['fifth-row-title'] }}</p>
+        <div class="certified-hearing-details scroll-along">
+          {% for block in section.blocks %}
+            <div class="certified-hearing-checkbox-main">
+              {% if block.settings.certified_hearing_protection %}
+                <div class="true">
+                  <svg
+                    class="desktop"
+                    width="16"
+                    height="10"
+                    viewBox="0 0 22 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M20.2998 1.30629L9.16344 13.6751L1.45458 5.70044" stroke="white" stroke-width="2.12658" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="13"
+                    height="9"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.5928 1.01514L5.49429 7.78855L1.27277 3.42146" stroke="white" stroke-width="1.16456" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['sixth-row'] %}
+      <div class="product-reusability">
+        <p class="title">{{ section.settings['sixth-row-title'] }}</p>
+        <div class="reusability scroll-along">
+          {% for block in section.blocks %}
+            <div class="reusability-main">
+              {% if block.settings.reusability %}
+                <div class="true">
+                  <svg
+                    class="desktop"
+                    width="16"
+                    height="10"
+                    viewBox="0 0 22 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M20.2998 1.30629L9.16344 13.6751L1.45458 5.70044" stroke="white" stroke-width="2.12658" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="13"
+                    height="9"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.5928 1.01514L5.49429 7.78855L1.27277 3.42146" stroke="white" stroke-width="1.16456" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['seventh-row'] %}
+      <div class="product-size-ear-tip">
+        <p class="title">{{ section.settings['seventh-row-title'] }}</p>
+        <div class="size-ear-tip scroll-along">
+          {% for block in section.blocks %}
+            <div class="size-ear-tip-main">
+              {% if block.settings['size-ear-tip'] %}
+                <div class="true">
+                  <svg
+                    class="desktop"
+                    width="16"
+                    height="10"
+                    viewBox="0 0 22 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M20.2998 1.30629L9.16344 13.6751L1.45458 5.70044" stroke="white" stroke-width="2.12658" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="13"
+                    height="9"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.5928 1.01514L5.49429 7.78855L1.27277 3.42146" stroke="white" stroke-width="1.16456" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['eighth-row'] %}
+      <div class="product-carry-case">
+        <p class="title">{{ section.settings['eighth-row-title'] }}</p>
+        <div class="carry-case scroll-along">
+          {% for block in section.blocks %}
+            <div class="carry-case-main">
+              {% if block.settings['carry-case'] %}
+                <div class="true">
+                  <svg
+                    class="desktop"
+                    width="16"
+                    height="10"
+                    viewBox="0 0 22 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M20.2998 1.30629L9.16344 13.6751L1.45458 5.70044" stroke="white" stroke-width="2.12658" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="13"
+                    height="9"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.5928 1.01514L5.49429 7.78855L1.27277 3.42146" stroke="white" stroke-width="1.16456" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['ninth-row'] %}
+      <div class="product-washable">
+        <p class="title">{{ section.settings['ninth-row-title'] }}</p>
+        <div class="washable scroll-along">
+          {% for block in section.blocks %}
+            <div class="washable-main">
+              {% if block.settings.washable %}
+                <div class="true">
+                  <svg
+                    class="desktop"
+                    width="16"
+                    height="10"
+                    viewBox="0 0 22 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M20.2998 1.30629L9.16344 13.6751L1.45458 5.70044" stroke="white" stroke-width="2.12658" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="13"
+                    height="9"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.5928 1.01514L5.49429 7.78855L1.27277 3.42146" stroke="white" stroke-width="1.16456" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['tenth-row'] %}
+      <div class="product-free-returns">
+        <p class="title">{{ section.settings['tenth-row-title'] }}</p>
+        <div class="free-returns scroll-along">
+          {% for block in section.blocks %}
+            <div class="free-returns-main">
+              {% if block.settings['free-returns'] %}
+                <div class="true">
+                  <svg
+                    class="desktop"
+                    width="16"
+                    height="10"
+                    viewBox="0 0 22 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M20.2998 1.30629L9.16344 13.6751L1.45458 5.70044" stroke="white" stroke-width="2.12658" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="13"
+                    height="9"
+                    viewBox="0 0 13 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11.5928 1.01514L5.49429 7.78855L1.27277 3.42146" stroke="white" stroke-width="1.16456" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {% else %}
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['eleventh-row'] %}
+      <div class="product-loop-mute">
+        <p class="title">{{ section.settings['eleventh-row-title'] }}</p>
+        <div class="details scroll-along">{{ section.settings['loop-mute-details'] }}</div>
+      </div>
+    {% endif %}
+
+    {% if section.settings['product-plus'] %}
+      <div class="product-plus scroll-along">
+        {% for block in section.blocks %}
+          <div class="product-plus-avaiable">
+            {% if block.settings.product_plus_link %}
+              <img src="{{ block.settings.plus_image | img_url}}">
+              <p class="product-plus-with-link">
+                With <a href="{{ block.settings.product-plus-link }}">{{ block.settings['product-plus-text'] }}</a>
+              </p>
+            {% else %}
+              <div class="cross-button">
+                <div class="false">
+                  <svg
+                    class="desktop"
+                    width="13"
+                    height="14"
+                    viewBox="0 0 13 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0.901367 1.57188L11.8818 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M11.8818 1.57188L0.901443 12.5523" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  <svg
+                    class="mobile"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 9 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M1.56836 1.56866L7.88208 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7.88184 1.56866L1.56811 7.88239" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </main>
+</section>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Compare Loop Earplugs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "column_number",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "col",
+      "label": "Number of Columns",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "first-row",
+      "label": "First Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "first-row-title",
+      "label": "First Row Title",
+      "default": "Best Used"
+    },
+    {
+      "type": "checkbox",
+      "id": "second-row",
+      "label": "Second Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "second-row-title",
+      "label": "Second Row Title",
+      "default": "Perfect For"
+    },
+    {
+      "type": "checkbox",
+      "id": "third-row",
+      "label": "Third Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "third-row-title",
+      "label": "Third Row Title",
+      "default": "Noise Reduction"
+    },
+    {
+      "type": "checkbox",
+      "id": "fourth-row",
+      "label": "Fourth Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "fourth-row-title",
+      "label": "Fourth Row Title",
+      "default": "Filter fine-tuned for"
+    },
+    {
+      "type": "checkbox",
+      "id": "fifth-row",
+      "label": "Fifth Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "fifth-row-title",
+      "label": "Fifth Row Title",
+      "default": "Certified Hearing Protection"
+    },
+    {
+      "type": "checkbox",
+      "id": "sixth-row",
+      "label": "Sixth Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "sixth-row-title",
+      "label": "Sixth Row Title",
+      "default": "Reusable & Sustainable"
+    },
+    {
+      "type": "checkbox",
+      "id": "seventh-row",
+      "label": "Seventh Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "seventh-row-title",
+      "label": "Seventh Row Title",
+      "default": "Adjustable ear tip sizes"
+    },
+    {
+      "type": "checkbox",
+      "id": "eighth-row",
+      "label": "Eighth Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eighth-row-title",
+      "label": "Eighth Row Title",
+      "default": "Portable Carry Case"
+    },
+    {
+      "type": "checkbox",
+      "id": "ninth-row",
+      "label": "Ninth Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "ninth-row-title",
+      "label": "Ninth Row Title",
+      "default": "Fully washable"
+    },
+    {
+      "type": "checkbox",
+      "id": "tenth-row",
+      "label": "Tenth Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tenth-row-title",
+      "label": "Tenth Row Title",
+      "default": "100-day free returns"
+    },
+    {
+      "type": "checkbox",
+      "id": "eleventh-row",
+      "label": "Eleventh Row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eleventh-row-title",
+      "label": "Eleventh Row Title",
+      "default": "Loop Mute"
+    },
+    {
+      "type": "checkbox",
+      "id": "product-plus",
+      "label": "Show Plus Product",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "loop-mute-details",
+      "label": "Loop Mute Details",
+      "default": "<p>Enjoy even more control over your volume with Loop Mute accessory. Simply plug in to your Loops for extra 5 dB of noise reduction on demand.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_product_new",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "product_returns_text",
+          "label": "Product Returns Text",
+          "default": "100-day free returns"
+        },
+        {
+          "type": "text",
+          "id": "product_description_title",
+          "label": "Product Description Title",
+          "default": "Tune out"
+        },
+        {
+          "type": "text",
+          "id": "product_description_description",
+          "label": "Product Description",
+          "default": "Reduce maximum noise and get in your bubble"
+        },
+        {
+          "type": "text",
+          "id": "best-used-title",
+          "label": "Best Used Location",
+          "default": "Alone"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_best_used",
+          "label": "Best Used Location Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_perfect_for_one",
+          "label": "Perfect For Location Image One"
+        },
+        {
+          "type": "text",
+          "id": "perfect-for-title_one",
+          "label": "Perfect For Location Text One",
+          "default": "Noise Sensitivity"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_perfect_for_two",
+          "label": "Perfect For Location Image two"
+        },
+        {
+          "type": "text",
+          "id": "perfect-for-title_two",
+          "label": "Perfect For Location Text two",
+          "default": "Sleep"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_perfect_for_three",
+          "label": "Perfect For Location Image three"
+        },
+        {
+          "type": "text",
+          "id": "perfect-for-title_three",
+          "label": "Perfect For Location Text three",
+          "default": "Focus"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_perfect_for_four",
+          "label": "Perfect For Location Image four"
+        },
+        {
+          "type": "text",
+          "id": "perfect-for-title_four",
+          "label": "Perfect For Location Text four",
+          "default": "Travel"
+        },
+        {
+          "type": "text",
+          "id": "noise-reduction-details",
+          "label": "Noise Reduction Details",
+          "default": "-27db"
+        },
+        {
+          "type": "richtext",
+          "id": "filter-for-details",
+          "label": "Filter Details",
+          "default": "<p>—</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "certified_hearing_protection",
+          "label": "Certified Hearing Protection",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "reusability",
+          "label": "Reusable & Sustainable",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "size-ear-tip",
+          "label": "Adjustable ear tip sizes",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "carry-case",
+          "label": "Portable Carry Case",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "washable",
+          "label": "Fully washable",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "free-returns",
+          "label": "100-day free returns",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "product_plus_link",
+          "label": "Prodcut Plus Avaiable",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "plus_image",
+          "label": "Plus Product Image"
+        },
+
+        {
+          "type": "text",
+          "id": "product-plus-text",
+          "label": "Product Plus Title",
+          "default": "Loop Engage Plus"
+        },
+        {
+          "type": "url",
+          "id": "product-plus-link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Compare Loop Earplugs"
+    }
+  ]
+}
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
+<style>
+    .main-{{ section.id }}, .header-{{ section.id }} .header-main{
+      max-width:1440px;
+      margin:0 auto;
+    }
 
-{% javascript %}
-{% endjavascript %}
+    .comparison-loop-{{ section.id }} .scroll-along{
+            display:grid;
+            grid-template-columns: repeat({{ section.settings.column_number }}, 1fr);
+            padding: 20px 0;
+        }
+
+
+        .header-{{ section.id }}{
+          position: sticky;
+          top: -1px;
+          z-index: 2;
+          background-color:#FFFFFF;
+          box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-loop-{{ section.id }} .slide-image.hide{
+          display: none !important;
+        }
+
+
+        .comparison-loop-{{ section.id }} .title{
+          font-family: "Avantt";
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 20px;
+          letter-spacing: -0.03em;
+          color:#252427;
+          padding: 15px 10px 15px 25px;
+          width:100%;
+          background-color:#EFEFEF;
+          font-weight: 600;
+          margin: 0;
+        }
+
+        .comparison-loop-{{ section.id }} .product-loop-mute{
+          border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-loop-{{ section.id }} #add-to-button-input{
+          display: none;
+        }
+
+        .comparison-loop-{{ section.id }} .loading-overlay__spinner {
+          width: 1.8rem;
+          display: inline-block;
+        }
+
+        .comparison-loop-{{ section.id }} .perfect-for-location-svg{
+          width: 71px;
+          height: 71px;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .comparison-loop-{{ section.id }} main .scroll-along .product_price_main .product-price{
+          padding:20px 0;
+        }
+        .comparison-loop-{{ section.id }} main .scroll-along .product-link{
+          padding: 0;
+          text-decoration:none;
+        }
+
+      @media screen and (max-width: 749px) {
+
+        .comparison-loop-{{ section.id }} .scroll-along{
+  grid-template-columns: repeat({{ section.settings.column_number }}, {% if section.settings.column_number <= 2 %} calc(100% / {{ section.settings.column_number }}) {% else %} calc((40 * {{ section.settings.column_number }}%) / {{ section.settings.column_number }}) {% endif %});
+          overflow: scroll;
+          padding: 10px 0;
+          scrollbar-width: none;  /* Firefox */
+        }
+
+        .comparison-loop-{{ section.id }} .scroll-along::-webkit-scrollbar, .product-loop-mute .scroll-along::-webkit-scrollbar {
+          display: none;  /* Safari and Chrome */
+        }
+
+      }
+
+
+          .comparison-loop-{{ section.id }} .true .desktop, .comparison-loop-{{ section.id }} .false .desktop{
+            display: block;
+          }
+
+          .comparison-loop-{{ section.id }} .true .mobile, .comparison-loop-{{ section.id }} .false .mobile{
+            display: none;
+          }
+
+        .header-{{ section.id }} .product-main , .comparison-loop-{{ section.id }} .best-used-location-main, .comparison-loop-{{ section.id }} .perfect-for-location-main, .comparison-loop-{{ section.id }} .perfect-for-location-one, .comparison-loop-{{ section.id }} .perfect-for-location-two, .comparison-loop-{{ section.id }} .perfect-for-location-three,.comparison-loop-{{ section.id }} .perfect-for-location-four,.comparison-loop-{{ section.id }} .product-image-change-main,.comparison-loop-{{ section.id }} .product-plus-avaiable{
+          display:flex;
+          flex-direction: column;
+          justify-content: start;
+          align-items: center;
+        }
+
+        .comparison-loop-{{ section.id }} .product-plus-avaiable .cross-button{
+        margin: auto 0;
+        }
+
+        .comparison-loop-{{ section.id }} .product-main .product-title, .comparison-loop-{{ section.id }} .product-main .product-price,.comparison-loop-{{ section.id }} .product-main .product-link, .comparison-loop-{{ section.id }} .product_price_main .product-price, .comparison-loop-{{ section.id }} .product-description-main .product-title, .comparison-loop-{{ section.id }} .noise-reduction-location-main .noise_decibel{
+          font-family: "Avantt";
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 20px;
+          letter-spacing: -0.03em !important;
+          padding: 20px 0;
+          color:#252427;
+          margin: 0;
+        }
+
+        .comparison-loop-{{ section.id }} .product-main .product-title, .comparison-loop-{{ section.id }} .product-main .product-price,.comparison-loop-{{ section.id }} .product-main .product-link{
+          padding:10px 0;
+        }
+
+
+        .comparison-loop-{{ section.id }} .product-main .product-title, .comparison-loop-{{ section.id }} .product-main .product-link, .comparison-loop-{{ section.id }} .product_price_main .product-price,.comparison-loop-{{ section.id }} .product-description-main .product-title, .comparison-loop-{{ section.id }} .noise-reduction-location-main .noise_decibel{
+          font-weight: 600;
+        }
+
+        .comparison-loop-{{ section.id }} .product-main .product-link{
+          color:#4E26B8;
+          text-decoration:none;
+        }
+
+        .comparison-loop-{{ section.id }} .silder-main{
+          display:flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .comparison-loop-{{ section.id }} .product-image-change-main{
+          max-width: 420px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-variant-color{
+          width: calc(var(--widthA) - 37px);
+          display: flex;
+          flex-wrap: wrap;
+          gap:11px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-variant-color label{
+          display: block;
+          height: 24px;
+          width: 24px;
+          border-radius:50%;
+          cursor:pointer;
+          position: relative;
+        }
+
+        .comparison-loop-{{ section.id }} .v-swatch:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border: 3px solid;
+          border-color: #fff;
+          border-radius: 50%;
+          box-shadow: inset 0 0 1px 1px #00000026;}
+
+        .comparison-loop-{{ section.id }} .product-variant-color label.active{
+          box-shadow: 0 0 0 2px #000;
+        }
+
+        .comparison-loop-{{ section.id }} .product-variant-color input{
+          clip: rect(0,0,0,0);
+          overflow: hidden;
+          position: absolute;
+          height: 1px;
+          width: 1px;
+        }
+
+        .comparison-loop-{{ section.id }} .slider-ul-main{
+          display: flex;
+          justify-content: center;
+          list-style: none;
+          width:248px;
+          overflow-x:hidden;
+          padding:0;
+        }
+
+        .comparison-loop-{{ section.id }} .slide-image{
+          display: block;
+        }
+        .comparison-loop-{{ section.id }} .slide-image.display_hide{
+          display: none;
+        }
+
+        .comparison-loop-{{ section.id }} .slider-ul-main img{
+          width:248px;
+          height:248px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-returns, .comparison-loop-{{ section.id }} .product-page-link a, .comparison-loop-{{ section.id }} .product-description-main .product-desc, .comparison-loop-{{ section.id }} .best-used-location-main p, .comparison-loop-{{ section.id }} .perfect-for-location-main p, .comparison-loop-{{ section.id }} .noise-reduction-location-main p, .comparison-loop-{{ section.id }} .filter-for-details p, .comparison-loop-{{ section.id }} .product-loop-mute .details, .comparison-loop-{{ section.id }} .product-plus-with-link, .comparison-loop-{{ section.id }} .noise-reduction-location-main{
+          font-family: "Avantt";
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          letter-spacing: -0.02em;
+          padding: 5px 0;
+          color:#757470;
+          margin: 0;
+          text-align:center;
+        }
+
+        .comparison-loop-{{ section.id }} .product-returns{
+          padding: 20px 0;
+        }
+
+        .comparison-loop-{{ section.id }} .product-loop-mute .details{
+          color:#252427;
+          max-width: 680px;
+          padding: 20px 0 20px 25px;
+          text-align:left;
+
+        }
+
+        .comparison-loop-{{ section.id }} .product-loop-mute .scroll-along{
+          overflow-x: hidden;
+          overflow-y: hidden;
+          display: grid;
+          grid-template-columns: repeat(1, calc(100% / 1));
+          scrollbar-width: none;  /* Firefox */
+        }
+
+        .comparison-loop-{{ section.id }} .best-used-location-main p{
+          color:#252427;
+          font-weight: 600;
+        }
+
+        .comparison-loop-{{ section.id }} .product-page-link a{
+          color: #4E26B8;
+          text-decoration:none;
+        }
+
+        .comparison-loop-{{ section.id }} .product-description-main, .comparison-loop-{{ section.id }} .noise-reduction-details .noise-reduction-location-main, .comparison-loop-{{ section.id }} .filter-for-details p{
+          text-align: center;
+        }
+
+        .comparison-loop-{{ section.id }} .product-description-main .product-desc{
+          max-width: 190px;
+          width:100%;
+        }
+
+        .comparison-loop-{{ section.id }} .perfect-for-location-main{
+          gap:20px;
+        }
+        .comparison-loop-{{ section.id }} .perfect-for-location-main p, .comparison-loop-{{ section.id }} .filter-for-details p{
+          margin: 0;
+        }
+        .comparison-loop-{{ section.id }} .noise-reduction-location-main .noise_decibel{
+          padding: 10px 0;
+        }
+
+        .comparison-loop-{{ section.id }} .certified-hearing-checkbox-main,.comparison-loop-{{ section.id }} .reusability-main,.comparison-loop-{{ section.id }} .carry-case-main,.comparison-loop-{{ section.id }} .size-ear-tip-main, .comparison-loop-{{ section.id }} .washable-main, .comparison-loop-{{ section.id }} .free-returns-main{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .comparison-loop-{{ section.id }} .certified-hearing-checkbox-main div,.comparison-loop-{{ section.id }} .reusability-main div, .comparison-loop-{{ section.id }} .carry-case-main div,.comparison-loop-{{ section.id }} .size-ear-tip-main div, .comparison-loop-{{ section.id }} .washable-main div, .comparison-loop-{{ section.id }} .free-returns-main div, .comparison-loop-{{ section.id }} .product-plus-avaiable .false{
+          width:32px;
+          height:32px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+          .comparison-loop-{{ section.id }} .certified-hearing-checkbox-main .true,.comparison-loop-{{ section.id }} .reusability-main .true, .comparison-loop-{{ section.id }} .carry-case-main .true, .comparison-loop-{{ section.id }} .size-ear-tip-main .true,.comparison-loop-{{ section.id }} .washable-main .true,.comparison-loop-{{ section.id }} .free-returns .true{
+            background-color: #4E26B8;
+          }
+
+          .comparison-loop-{{ section.id }} .certified-hearing-checkbox-main .false,
+          .comparison-loop-{{ section.id }} .reusability-main .false,
+          .comparison-loop-{{ section.id }} .carry-case-main .false,
+          .comparison-loop-{{ section.id }} .size-ear-tip-main .false,
+          .comparison-loop-{{ section.id }} .washable-main .false,.comparison-loop-{{ section.id }} .free-returns .false, .comparison-loop-{{ section.id }} .product-plus-avaiable .false{
+            background-color: #BCBAB8;
+          }
+
+
+          .comparison-loop-{{ section.id }} .product-form__submit.button.add-to-cart-button{
+            padding: 20px 36px !important;
+            min-height: 60px !important;
+          }
+
+          .comparison-loop-{{ section.id }} .filter-for-details.scroll-along{
+            align-items: center;
+          }
+
+
+      @media screen and (max-width: 749px) {
+      .comparison-loop-{{ section.id }} .certified-hearing-checkbox-main div,.comparison-loop-{{ section.id }} .reusability-main div, .comparison-loop-{{ section.id }} .carry-case-main div,.comparison-loop-{{ section.id }} .size-ear-tip-main div, .comparison-loop-{{ section.id }} .washable-main div, .comparison-loop-{{ section.id }} .free-returns-main div,.comparison-loop-{{ section.id }} .product-plus-avaiable .false{
+          width:23px;
+          height:23px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-description-main .product-desc{
+          max-width: 152px;
+          width:100%;
+        }
+
+        .comparison-loop-{{ section.id }} .slider-ul-main img{
+          width:123px;
+          height:123px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-returns, .comparison-loop-{{ section.id }} .product-page-link a, .comparison-loop-{{ section.id }} .product-description-main .product-desc, .comparison-loop-{{ section.id }} .best-used-location-main p, .comparison-loop-{{ section.id }} .perfect-for-location-main p, .comparison-loop-{{ section.id }} .noise-reduction-location-main p, .comparison-loop-{{ section.id }} .filter-for-details p, .comparison-loop-{{ section.id }} .product-loop-mute .details, .comparison-loop-{{ section.id }} .product-plus-with-link{
+          font-size: 16px;
+          line-height: 19px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-loop-mute .details{
+          color:#252427;
+          padding: 20px 10px 20px 25px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-loop-mute .scroll-along{
+          overflow: scroll;
+          display: grid;
+          grid-template-columns: repeat(1, calc(120% / 1)) !important;
+          scrollbar-width: none;  /* Firefox */
+        }
+
+        .comparison-loop-{{ section.id }} .slider-ul-main{
+          width:123px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-variant-color{
+          width: calc(var(--widthB) - 20px);
+          gap:6px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-variant-color label{
+          height: 13px;
+          width: 13px;
+        }
+
+         .comparison-loop-{{ section.id }} .product-main .product-price, .comparison-loop-{{ section.id }} .product_price_main .product-price,.comparison-loop-{{ section.id }} .product-description-main .product-title,.comparison-loop-{{ section.id }}  .noise-reduction-location-main .noise_decibel{
+          font-size: 20px;
+          line-height: 20px;
+        }
+
+        .comparison-loop-{{ section.id }} .product-main .product-price{
+          padding: 5px 0;
+        }
+
+         .comparison-loop-{{ section.id }} .product-main .product-title,.comparison-loop-{{ section.id }} .product-main .product-link{
+          padding: 5px 0;
+        }
+
+        .comparison-loop-{{ section.id }} .perfect-for-location-main p, .comparison-loop-{{ section.id }} .filter-for-details p,.comparison-loop-{{ section.id }} .product-loop-mute .details p{
+          margin: 0;
+        }
+
+        .comparison-loop-{{ section.id }} .product-form__submit.button.add-to-cart-button{
+            font-size: 16px !important;
+            line-height: 20px !important;
+            padding: 10px 20px !important;
+            min-height: 39px !important;
+            min-width: 94px !important;
+          }
+
+          .comparison-loop-{{ section.id }} .true .desktop, .comparison-loop-{{ section.id }} .false .desktop{
+            display: none;
+          }
+
+          .comparison-loop-{{ section.id }} .true .mobile,.comparison-loop-{{ section.id }} .false .mobile{
+            display: block;
+          }
+
+          .comparison-loop-{{ section.id }} .v-swatch:before {
+            border: 1px solid;
+            border-color: #fff;
+          }
+
+      }
+
+      @media screen and (max-width: 440px) {
+          .comparison-loop-{{ section.id }} .product-plus-with-link{
+            font-size: 14px;
+            max-width:120px;
+          }
+          .comparison-loop-{{ section.id }} .product-description-main .product-desc{
+          max-width: 140px;
+          width: 100%;
+          margin: 0 auto;
+        }
+      }
+
+      @media screen and (max-width: 405px) {
+          .comparison-loop-{{ section.id }} .product-description-main .product-desc{
+          max-width: 105px;
+          font-size: 15px;
+        }
+        .comparison-loop-{{ section.id }} .product-returns, .comparison-loop-{{ section.id }} .product-page-link a, .comparison-loop-{{ section.id }} .product-description-main .product-desc, .comparison-loop-{{ section.id }} .best-used-location-main p, .comparison-loop-{{ section.id }} .perfect-for-location-main p, .comparison-loop-{{ section.id }} .noise-reduction-location-main,.comparison-loop-{{ section.id }} .noise-reduction-location-main p, .comparison-loop-{{ section.id }} .filter-for-details p, .comparison-loop-{{ section.id }} .product-loop-mute .details, .comparison-loop-{{ section.id }} .product-plus-with-link{
+          font-size: 15px;
+        }
+      }
+      @media screen and (max-width: 389px) {
+          .comparison-loop-{{ section.id }} .product-plus-with-link{
+            font-size: 13px;
+          }
+          .comparison-loop-{{ section.id }} .perfect-for-location-main p{
+          font-size: 14px;
+        }
+      }
+</style>
+
+<script>
+  //Image changing function
+  document.querySelector('[data-ref="slider-main-component"]').addEventListener('click', (e) => {
+    if (e.target.value) {
+      e.target.parentElement.querySelectorAll('label').forEach((elm) => elm.classList.remove('active'));
+      e.target.parentElement.querySelector(`[for="${e.target.getAttribute('id')}"]`).classList.add('active');
+
+      let selectedSliderParent = e.target.parentElement.previousElementSibling;
+      selectedSliderParent.querySelectorAll('.slide-image').forEach((elm) => elm.classList.add('display_hide'));
+
+      selectedSliderParent.querySelector(`[alt="${e.target.value}"]`).parentElement.classList.remove('display_hide');
+
+      e.target.parentElement.parentElement
+        .querySelector('#add-to-button-input')
+        .setAttribute('value', e.target.getAttribute('form'));
+
+      e.target.parentElement.parentElement.querySelector(
+        '.product-page-link .product-link'
+      ).href = `/products/${e.target.getAttribute('name')}?variant=${e.target.getAttribute('form')}`;
+    }
+  });
+
+  //Horizontal Scroll Function
+  const allScrollSection = document.querySelectorAll('.scroll-along');
+
+  allScrollSection.forEach((element) => {
+    element.addEventListener('scroll', (e) => {
+      const positionX = element.scrollLeft;
+
+      allScrollSection.forEach((slideElm) => {
+        if (slideElm !== element) slideElm.scrollLeft = positionX;
+      });
+    });
+  });
+
+  //add to cart button
+  const addToCartButtons = document.querySelectorAll('.product-form__submit');
+
+  addToCartButtons.forEach((element) => {
+    element.addEventListener('click', async (e) => {
+      // e.target.setAttribute('aria-disabled', true);
+      // e.target.parentElement.querySelector('.loading-overlay__spinner').classList.remove('hidden');
+      // e.target.classList.add('loading');
+
+      let formData = {
+        items: [
+          {
+            id: parseInt(e.target.parentElement.querySelector('input').value),
+            quantity: 1,
+          },
+        ],
+      };
+
+      await fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .catch((e) => {
+          console.error(e);
+        })
+        .finally(() => {
+          // e.target.removeAttribute('aria-disabled');
+          // e.target.parentElement.querySelector('.loading-overlay__spinner').classList.add('hidden');
+          // e.target.classList.remove('loading');
+        });
+    });
+  });
+
+  // const scrollFunction = () => {
+  //   var lastScrollTop = 0;
+  //   window.addEventListener(
+  //     'scroll',
+  //     function () {
+  //       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  //       var stickyHeader = document.querySelector('#compare-sticky-header');
+  //       var header = document.querySelector('sticky-header.header-wrapper');
+  //       var headerHeight = header.offsetHeight;
+
+  //       let elementArray = [];
+
+  //       document.querySelectorAll('header-menu').forEach((dropDownElm, index) => {
+  //         const headerElement = document
+  //           .querySelector(`#Details-HeaderMenu-${index + 1} summary`)
+  //           .getAttribute('aria-expanded');
+  //         elementArray.push(headerElement);
+  //       });
+
+  //       const allEqual = elementArray.every((val) => val === elementArray[0]);
+
+  //       if (allEqual) {
+  //         if (scrollTop < lastScrollTop) {
+  //           if (stickyHeader && header) {
+  //             stickyHeader.style.top = `${headerHeight}px`;
+  //           }
+  //         } else {
+  //           stickyHeader.style.top = '-1px';
+  //         }
+  //       } else {
+  //         stickyHeader.style.top = '-1px';
+  //       }
+  //       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  //     },
+  //     false
+  //   );
+  // };
+
+  // scrollFunction();
+
+  // new MutationObserver(() => {
+  //   scrollFunction();
+  // }).observe(document.querySelector('header-menu'), { attributes: true });
+</script>
