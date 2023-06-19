@@ -120,12 +120,39 @@
             "product-plus-text": "Loop Engage Plus",
             "product-plus-link": ""
           }
+        },
+        "72c2a117-78ec-433d-951d-5f366a0ad968": {
+          "type": "comparison_product_new",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "product_returns_text": "100-day free returns",
+            "product_description_title": "Tune out",
+            "product_description_description": "Reduce maximum noise and get in your bubble",
+            "best-used-title": "Alone",
+            "perfect-for-title_one": "Noise Sensitivity",
+            "perfect-for-title_two": "Sleep",
+            "perfect-for-title_three": "Focus",
+            "perfect-for-title_four": "Travel",
+            "noise-reduction-details": "-27db",
+            "filter-for-details": "<p>—<\/p>",
+            "certified_hearing_protection": true,
+            "reusability": true,
+            "size-ear-tip": true,
+            "carry-case": true,
+            "washable": true,
+            "free-returns": true,
+            "product_plus_link": false,
+            "product-plus-text": "Loop Engage Plus",
+            "product-plus-link": ""
+          }
         }
       },
       "block_order": [
         "f8ce2465-3083-4e0b-9a93-efd53b352979",
         "fbf9a430-19b0-4a65-bbca-b47cb7a84e6d",
-        "1184ef40-64f9-417f-a9c6-091308968f4e"
+        "1184ef40-64f9-417f-a9c6-091308968f4e",
+        "72c2a117-78ec-433d-951d-5f366a0ad968"
       ],
       "settings": {
         "column_number": 3,
