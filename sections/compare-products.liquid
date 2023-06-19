@@ -21,9 +21,9 @@
         <script>
         console.log({{block.settings.product.images | json}})
 </script>
-                {% for variant in block.settings.product.variants %}
+                {% for image in block.settings.product.images %}
                   <li class="slide-component-main slide-image {% if forloop.index0 != 0 %} display_hide {% endif %}">
-                    <img src="{{ variant.featured_image | img_url: 'master'}}" alt="{{ variant.title }}">
+                    <img src="{{ image.src | img_url: 'master'}}" alt="{{ image.alt }}">
                   </li>
                 {% endfor %}
               </ul>
@@ -31,7 +31,7 @@
 
             <div
               class="product-variant-color"
-              style="--widthA : calc(24 * {{ block.settings.product.variants | size}}px); --widthB : calc(13 * {{ block.settings.product.variants | size}}px);"
+              style="--widthA : calc(24 * {{ block.settings.product.images | size}}px); --widthB : calc(13 * {{ block.settings.product.variants | size}}px);"
             >
               {%- for variant in block.settings.product.variants -%}
                 <input
