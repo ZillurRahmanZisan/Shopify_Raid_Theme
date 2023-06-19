@@ -18,6 +18,9 @@
           <div class="product-slider-main product-image-change-main">
             <div class="product-slider-image">
               <ul class="slider-component-main slider-ul-main">
+        <script>
+        console.log({{block.settings.product.variants}})
+</script>
                 {% for variant in block.settings.product.variants %}
                   <li class="slide-component-main slide-image {% if forloop.index0 != 0 %} display_hide {% endif %}">
                     <img src="{{ variant.featured_image | img_url: 'master'}}" alt="{{ variant.title }}">
