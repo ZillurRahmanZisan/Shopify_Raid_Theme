@@ -171,8 +171,9 @@
           "image": {
             "type": "image",
             "settings": {
-              "image_width": 70,
-              "alignment": "right"
+              "image": "shopify:\/\/shop_images\/18df8a4ecf5fbf9aa67166c4aade7482.jpg",
+              "image_width": 200,
+              "alignment": "center"
             }
           },
           "text": {
