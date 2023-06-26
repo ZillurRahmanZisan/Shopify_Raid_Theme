@@ -175,9 +175,10 @@
         "column-3": {
           "type": "column",
           "settings": {
-            "title": "",
-            "text": "<p>Add an image of a product from your collection in this column.<\/p>",
-            "link_label": "",
+            "image": "shopify:\/\/shop_images\/3f1610213c3029bbf6f050505fc02823.jpg",
+            "title": "FLEX FIT | MINI OTTOMAN BLACK",
+            "text": "",
+            "link_label": "Buy Now",
             "link": ""
           }
         }
