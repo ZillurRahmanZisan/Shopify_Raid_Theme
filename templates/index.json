@@ -155,19 +155,21 @@
         "column-1": {
           "type": "column",
           "settings": {
-            "title": "MULTICOLUMN",
-            "text": "<p>Highlight a collection by sharing its benefits and features.<\/p>",
-            "link_label": "SHOP",
-            "link": ""
+            "image": "shopify:\/\/shop_images\/c1a864cb74de0e0fd0004872d6a00edd.jpg",
+            "title": "NIKE | SWOOSH PRO FLAT PEAK CAP",
+            "text": "",
+            "link_label": "Buy Now",
+            "link": "shopify:\/\/products\/nike-swoosh-pro-flat-peak-cap"
           }
         },
         "column-2": {
           "type": "column",
           "settings": {
-            "title": "",
-            "text": "<p>Add an image of a product from your collection in this column.<\/p>",
-            "link_label": "",
-            "link": ""
+            "image": "shopify:\/\/shop_images\/8a029d2035bfb80e473361dfc08449be.jpg",
+            "title": "ADIDAS | CLASSIC BACKPACK",
+            "text": "",
+            "link_label": "Buy Now",
+            "link": "shopify:\/\/products\/adidas-classic-backpack"
           }
         },
         "column-3": {
