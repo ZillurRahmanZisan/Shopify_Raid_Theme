@@ -7,7 +7,7 @@
           "type": "heading",
           "settings": {
             "heading": "IMAGE WITH TEXT",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text": {
@@ -31,7 +31,7 @@
         "button"
       ],
       "settings": {
-        "image": "{{ shop.brand.cover_image }}",
+        "image": "shopify:\/\/shop_images\/23dfee017bb5915cc43755528841b380.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -323,6 +323,60 @@
         "faq_title": "Frequently Asked Questions",
         "faq_description": "You can ask about your desire."
       }
+    },
+    "0855badd-f5da-4e4e-a994-49bd2357da05": {
+      "type": "slideshow",
+      "blocks": {
+        "template--17420592283968__0855badd-f5da-4e4e-a994-49bd2357da05-1687789157c343b41b-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/d084729365d07462ce72087777d31717.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "template--17420592283968__0855badd-f5da-4e4e-a994-49bd2357da05-1687789157c343b41b-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/retail-shopping-package.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--17420592283968__0855badd-f5da-4e4e-a994-49bd2357da05-1687789157c343b41b-0",
+        "template--17420592283968__0855badd-f5da-4e4e-a994-49bd2357da05-1687789157c343b41b-1"
+      ],
+      "settings": {
+        "layout": "grid",
+        "slide_height": "small",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
     }
   },
   "order": [
@@ -333,6 +387,7 @@
     "multicolumn",
     "collapsible-content",
     "newsletter",
-    "fef46b69-b1ae-42a1-ab64-29e87e637a48"
+    "fef46b69-b1ae-42a1-ab64-29e87e637a48",
+    "0855badd-f5da-4e4e-a994-49bd2357da05"
   ]
 }
