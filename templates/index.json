@@ -21,7 +21,7 @@
           "type": "button",
           "settings": {
             "button_label": "SHOP",
-            "button_link": ""
+            "button_link": "shopify:\/\/products\/dr-martens-1460z-dmc-8-eye-boot-cherry-smooth"
           }
         }
       },
@@ -209,7 +209,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "SHARE A BENEFIT OF YOUR FEATURED PRODUCT",
-            "icon": "plant",
+            "icon": "shirt",
             "row_content": "<p>Include key facts, specifications, and important information about your featured product. <\/p><p>Add an image in your Collapsible content settings for more visual interest.<\/p>",
             "page": ""
           }
