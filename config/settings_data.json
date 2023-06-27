@@ -136,7 +136,42 @@
           },
           "317b4059-cd97-45d4-b843-baaa3e692090": {
             "type": "announcement",
-            "disabled": true,
+            "settings": {
+              "text": "Welcome to our store",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          },
+          "bc08e4e7-762c-4049-93b4-1a9b2de39c6d": {
+            "type": "announcement",
+            "settings": {
+              "text": "Welcome to our store",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          },
+          "3def6af9-a571-4c8c-90b5-fef9192b0e5a": {
+            "type": "announcement",
+            "settings": {
+              "text": "Welcome to our store",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          },
+          "ddbab4a4-258e-491c-88c8-f525e8c27481": {
+            "type": "announcement",
+            "settings": {
+              "text": "Welcome to our store",
+              "text_alignment": "center",
+              "color_scheme": "accent-1",
+              "link": ""
+            }
+          },
+          "663627bc-1c30-4780-a329-9093bd2f970e": {
+            "type": "announcement",
             "settings": {
               "text": "Welcome to our store",
               "text_alignment": "center",
@@ -147,7 +182,11 @@
         },
         "block_order": [
           "announcement-bar-0",
-          "317b4059-cd97-45d4-b843-baaa3e692090"
+          "317b4059-cd97-45d4-b843-baaa3e692090",
+          "bc08e4e7-762c-4049-93b4-1a9b2de39c6d",
+          "3def6af9-a571-4c8c-90b5-fef9192b0e5a",
+          "ddbab4a4-258e-491c-88c8-f525e8c27481",
+          "663627bc-1c30-4780-a329-9093bd2f970e"
         ],
         "settings": {
         }
