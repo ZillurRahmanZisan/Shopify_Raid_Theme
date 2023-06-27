@@ -193,6 +193,19 @@
       },
       "header": {
         "type": "header",
+        "blocks": {
+          "393d30cf-a668-49b9-a046-005e3614b115": {
+            "type": "announcement",
+            "settings": {
+              "text": "Hassle-free returns",
+              "link_text": "30-day postage paid returns",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "393d30cf-a668-49b9-a046-005e3614b115"
+        ],
         "settings": {
           "color_scheme": "background-1",
           "logo": "{{ shop.brand.logo }}",
