@@ -201,10 +201,19 @@
               "link_text": "30-day postage paid returns",
               "link": ""
             }
+          },
+          "df4f1912-0f0f-434b-a5c3-44a53950f41d": {
+            "type": "announcement",
+            "settings": {
+              "text": "Hassle-free returns",
+              "link_text": "30-day postage paid returns",
+              "link": ""
+            }
           }
         },
         "block_order": [
-          "393d30cf-a668-49b9-a046-005e3614b115"
+          "393d30cf-a668-49b9-a046-005e3614b115",
+          "df4f1912-0f0f-434b-a5c3-44a53950f41d"
         ],
         "settings": {
           "color_scheme": "background-1",
