@@ -945,3 +945,77 @@ class ProductRecommendations extends HTMLElement {
 }
 
 customElements.define('product-recommendations', ProductRecommendations);
+
+
+  theme.announcementBar = (function() {
+    var args = {
+      autoPlay: 5000,
+      avoidReflow: true,
+      cellAlign: theme.config.rtl ? 'right' : 'left'
+    };
+    var bar;
+    var flickity;
+  
+    function init() {
+      bar = document.getElementById('AnnouncementSlider');
+      if (!bar) {
+        return;
+      }
+  
+      unload();
+  
+      if (bar.dataset.blockCount === 1) {
+        return;
+      }
+  
+      if (theme.config.bpSmall || bar.dataset.compact === 'true') {
+        initSlider();
+      }
+  
+      document.addEventListener('matchSmall', function() {
+        unload();
+        initSlider();
+      });
+  
+      document.addEventListener('unmatchSmall', function() {
+        unload();
+        if (bar.dataset.compact === 'true') {
+          initSlider();
+        }
+      });
+    }
+  
+    function initSlider() {
+      flickity = new theme.Slideshow(bar, args);
+    }
+  
+    // Go to slide if selected in the editor
+    function onBlockSelect(id) {
+      var slide = bar.querySelector('#AnnouncementSlide-' + id);
+      var index = parseInt(slide.dataset.index);
+  
+      if (flickity && typeof flickity.pause === 'function') {
+        flickity.goToSlide(index);
+        flickity.pause();
+      }
+    }
+  
+    function onBlockDeselect() {
+      if (flickity && typeof flickity.play === 'function') {
+        flickity.play();
+      }
+    }
+  
+    function unload() {
+      if (flickity && typeof flickity.destroy === 'function') {
+        flickity.destroy();
+      }
+    }
+  
+    return {
+      init: init,
+      onBlockSelect: onBlockSelect,
+      onBlockDeselect: onBlockDeselect,
+      unload: unload
+    };
+  })();
