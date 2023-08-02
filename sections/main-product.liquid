@@ -48,7 +48,7 @@
   {%- endif -%}
 
   <script>
-  console.log({{ product | json}})
+  console.log({{ product.selected_or_first_available_variant | json}})
   </script>
 
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
