@@ -16,9 +16,10 @@
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
         {{- collection.title | escape -}}
       </h1>
-      {% for item in collection.metafields.custom.different_metaobjects.values %}
-          <p>{{ item.value }}</p>
-      {% endfor %}
+      <script>
+      console.log(" {{collection.metafields.custom.different_metaobjects.value | json }}")
+      </script>
+
       {%- if section.settings.show_collection_description -%}
         <div class="collection-hero__description rte">{{ collection.description }}</div>
       {%- endif -%}
