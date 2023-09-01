@@ -20,9 +20,12 @@
         console.log( {{collection.metafields.custom.different_metaobjects.value | json }})
       </script>
       <h1>{{ collection.metafields.custom.different_metaobjects.value }}</h1>
-      {% for item in collection.metafields.custom.different_metaobjects.value %}
-          <h1>sadsadsad</h1>
-        {% endfor %}
+      {% assign collect = collection.metafields.custom.different_metaobjects.value %}
+       <p>{{ collect.item_1.value }}</p>
+       <p>{{ collect.item_2.value }}</p>
+       <p>{{ collect.item_3.value }}</p>
+       <p>{{ collect.item_4.value }}</p>
+       
 
       {%- if section.settings.show_collection_description -%}
         <div class="collection-hero__description rte">{{ collection.description }}</div>
