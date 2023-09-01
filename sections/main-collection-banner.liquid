@@ -17,7 +17,7 @@
         {{- collection.title | escape -}}
       </h1>
       <script>
-      console.log( {{collection.metafields.custom.different_metaobjects.value | json }})
+        console.log( {{collection.metafields.custom.different_metaobjects.value | json }})
       </script>
 
       {%- if section.settings.show_collection_description -%}
