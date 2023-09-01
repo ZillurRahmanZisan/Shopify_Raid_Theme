@@ -17,8 +17,8 @@
         {{- collection.title | escape -}}
       </h1>
       <script>
-console.log({{collection.metafields.custom.different_metaobjects}})
-</script>
+      console.log("{{collection.metafields.custom.different_metaobjects}}")
+      </script>
 
       {%- if section.settings.show_collection_description -%}
         <div class="collection-hero__description rte">{{ collection.description }}</div>
