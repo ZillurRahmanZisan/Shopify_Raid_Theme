@@ -21,7 +21,7 @@
       </script>
       <h1>{{ collection.metafields.custom.different_metaobjects.value }}</h1>
       {% for item in collection.metafields.custom.different_metaobjects.value %}
-          <h1>{{ item }}</h1>
+          <h1>{{ item.field.value }}</h1>
         {% endfor %}
 
       {%- if section.settings.show_collection_description -%}
