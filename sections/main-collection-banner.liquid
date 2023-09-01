@@ -17,7 +17,7 @@
         {{- collection.title | escape -}}
       </h1>
       {% for item in collection.metafields.custom.different_metaobjects.values %}
-          <p>{{ item }}</p>
+          <p>{{ item.collection }}</p>
       {% endfor %}
       {%- if section.settings.show_collection_description -%}
         <div class="collection-hero__description rte">{{ collection.description }}</div>
