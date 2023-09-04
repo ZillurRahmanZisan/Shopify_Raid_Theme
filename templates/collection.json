@@ -2,6 +2,7 @@
   "sections": {
     "image-banner": {
       "type": "image-banner",
+      "disabled": true,
       "settings": {
         "image": "{{ collection.image }}",
         "image_overlay_opacity": 0,
@@ -19,8 +20,8 @@
     "banner": {
       "type": "main-collection-banner",
       "settings": {
-        "show_collection_description": false,
-        "show_collection_image": false,
+        "show_collection_description": true,
+        "show_collection_image": true,
         "color_scheme": "background-1"
       }
     },
