@@ -46,7 +46,7 @@ if (Shopify?.Checkout?.step === 'thank_you') {
                 r: parseFloat(
                   Currency.convert(
                     Shopify?.checkout?.subtotal_price,
-                    Shopify?.checkout?.currency,
+                    Shopify?.Checkout?.currency,
                     currency_to_report
                   )
                 ),
