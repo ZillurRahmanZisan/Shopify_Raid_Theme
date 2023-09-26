@@ -71,9 +71,29 @@
                         {% unless freeGiftProduct %}
                           {% if freeGiftProduct %}
                             <script>
-                              var itemToAdd = "44323585360192";
-                              var quantityToAdd = 1;
-                              Shopify.addItem(itemToAdd, quantityToAdd);
+                              // var itemToAdd = "44323585360192";
+                              // var quantityToAdd = 1;.
+                              var itemToAdd = {
+                                id: "44323585360192",
+                                quantity: 1
+                              };
+
+                              fetch('/cart/add.js', {
+                                method: 'POST',
+                                headers: {
+                                  'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(itemToAdd)
+                              })
+                              .then(response => response.json())
+                              .then(data => {
+                                // Handle the response (data) as needed
+                                console.log('Item added to cart:', data);
+                                // You may want to update the cart display or perform other actions
+                              })
+                              .catch(error => {
+                                console.error('Error adding item to cart:', error);
+                              });
                             </script>
                           {% endif %}
                         {% endunless %}
