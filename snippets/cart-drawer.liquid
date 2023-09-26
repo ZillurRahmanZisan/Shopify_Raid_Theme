@@ -72,7 +72,7 @@
                         {% assign freeGiftProduct = false %}
                         {% for freeGift in cart.items %}
                           <script>
-                        console.log({{ freeGift }},"snjajdksajkd")
+                        console.log({{ freeGift | json }},"snjajdksajkd")
                       </script>
                           {% if freeGift.product.tags contains 'free-gift-product' %}
                             
