@@ -1168,44 +1168,7 @@
       ]
     }
   </script>
-                        {% if product.tags contains 'free-gift' %}
-  <script>
-    // Check if the product has the "free-gift" tag
-    var productId = {{ product.id }};
-    var freeGiftProductId = {{ product.id }}; // Replace with the ID of your free gift product
-
-    // Function to add the free gift to the cart
-    function addFreeGiftToCart() {
-      var data = {
-        items: [
-          {
-            id: freeGiftProductId,
-            quantity: 1,
-          },
-        ],
-      };
-
-      // Add the free gift to the cart using the Shopify AJAX API
-      $.ajax({
-        type: 'POST',
-        url: '/cart/add.js',
-        data: data,
-        dataType: 'json',
-        success: function () {
-          alert('Free gift added to cart!');
-        },
-      });
-    }
-
-    // Add a button to trigger the free gift addition
-    $(document).ready(function () {
-      $('#addFreeGift').on('click', function () {
-        addFreeGiftToCart();
-      });
-    });
-  </script>
-{% endif %}
-
+                        
 </section>
 
 {% schema %}
