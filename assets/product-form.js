@@ -47,7 +47,7 @@ if (!customElements.get('product-form')) {
       //   formData.append('id', this.form.querySelector('[name=freeGift]').value);
       //   this.cart.setActiveElement(document.activeElement);
       // }
-      config.body = formData;
+      config.body = JSON.Stringify(formData);
 
       console.log(this.cart)
       console.log(config.body)
