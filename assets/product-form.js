@@ -48,7 +48,7 @@ if (!customElements.get('product-form')) {
       //   this.cart.setActiveElement(document.activeElement);
       // }
       
-      config.body = json.stringify(formData);
+      config.body = JSON.stringify(formData);
 
       console.log(this.cart)
       console.log(config.body)
