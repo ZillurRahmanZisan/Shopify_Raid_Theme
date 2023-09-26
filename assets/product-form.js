@@ -43,7 +43,6 @@ if (!customElements.get('product-form')) {
       if (this.cart) {
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
-        formData.append('id', this.form.querySelector('[name=id]').value);
         formData.append('id', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
       }
@@ -51,7 +50,7 @@ if (!customElements.get('product-form')) {
       config.body = formData;
 
       console.log(this.cart)
-      console.log(config.body)
+      console.log(formData.entries())
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
         .then((response) => {
