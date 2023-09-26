@@ -70,7 +70,7 @@
                       {% if item.product.tags contains 'product:free-gift' %}
                         {% assign freeGiftProduct = all_products['free-gift-product'].title %}
                         <script>
-                        console.log({{ all_products["addidas"] }},"snjajdksajkd")
+                        console.log({{ all_products["product:free-gift"] }},"snjajdksajkd")
                       </script>
                         {% assign freeGiftProduct = false %}
                         {% for freeGift in cart.items %}
