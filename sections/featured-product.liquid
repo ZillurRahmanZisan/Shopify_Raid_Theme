@@ -340,6 +340,14 @@
                           value="{{ product.selected_or_first_available_variant.id }}"
                           disabled
                         >
+                        {% if product.tags contains 'free-gift' %}
+                    <input
+                      type="hidden"
+                      name="freeGift"
+                      value= "44323585360192"
+                      disabled
+                    >
+                    {% endif %}
                         <div class="product-form__buttons">
                           <button
                             type="submit"
