@@ -609,7 +609,7 @@
                       value="{{ product.selected_or_first_available_variant.id }}"
                       disabled
                     >
-                    {% if product.tags contains 'free-gift' %}
+                    {% if product.tags contains 'product:free-gift' %}
                     <input
                       type="hidden"
                       name="freeGift"
