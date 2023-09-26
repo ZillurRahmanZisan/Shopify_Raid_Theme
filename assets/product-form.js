@@ -26,6 +26,8 @@ if (!customElements.get('product-form')) {
       delete config.headers['Content-Type'];
 
       const formData = new FormData(this.form);
+
+      console.log(this.form)
       if (this.cart) {
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
