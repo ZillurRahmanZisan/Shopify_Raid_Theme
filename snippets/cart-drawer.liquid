@@ -77,7 +77,7 @@
                           {% assign freeGiftProduct = all_products['free-gift-product'] %}
                           {% if freeGiftProduct %}
                             <script>
-                              console.log(freeGiftProduct)
+                              console.log({{freeGiftProduct}})
                               // var itemToAdd = {{ freeGiftProduct | json }};
                               // var quantityToAdd = 1;
                               // Shopify.addItem(itemToAdd, quantityToAdd);
