@@ -67,7 +67,7 @@
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
                       <script>
-                        console.lgo({{item}})
+                        console.log("{{ item }}")
                       </script>
                       {% if item.product.tags contains 'product:free-gift' %}
                         {% assign freeGiftProduct = false %}
