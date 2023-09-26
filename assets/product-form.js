@@ -78,6 +78,8 @@ if (!customElements.get('product-form')) {
       
       if(this.form.querySelector('[name=freeGift]')){
         this.form.querySelector('[name=freeGift]').disabled = false;
+
+        console.log("FreeGift")
         let cartData = {
        'items': [
          {
