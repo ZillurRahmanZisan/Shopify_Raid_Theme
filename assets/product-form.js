@@ -25,19 +25,6 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
-      // let formData = {
-      //  'items': [
-      //    {
-      //   'id': this.form.querySelector('[name=id]').value,
-      //   'quantity': 1
-      //   },
-      //    {
-      //   'id': this.form.querySelector('[name=freeGift]').value,
-      //   'quantity': 1
-      //   }
-      //  ]
-      // };
-
       const formData = new FormData(this.form);
 
       if (this.cart) {
@@ -87,6 +74,33 @@ if (!customElements.get('product-form')) {
           if (!this.error) this.submitButton.removeAttribute('aria-disabled');
           this.querySelector('.loading-overlay__spinner').classList.add('hidden');
         });
+
+      
+      if(this.form.querySelector('[name=freeGift]')){
+        this.form.querySelector('[name=freeGift]').disabled = false;
+        let cartData = {
+       'items': [
+         {
+        'id': this.form.querySelector('[name=freeGift]').value,
+        'quantity': 1
+        }
+       ]
+      };
+        
+      fetch(window.Shopify.routes.root + 'cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cartData)
+      })
+      .then(response => {
+        return response.json();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
     }
 
     handleErrorMessage(errorMessage = false) {
