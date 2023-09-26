@@ -69,7 +69,7 @@
                       {% if item.product.tags contains 'product:free-gift' %}
                          {% for product in collections.all.products %}
                            <script>
-                                  console.log({{ product }},"asdsadsadsa");
+                                  console.log({{ product }}, "asdsadsadsa");
                                 </script>
                             {% for tag in product.tags %}
                               {% if tag == 'free-gift-product' %}
