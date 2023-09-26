@@ -27,7 +27,6 @@ if (!customElements.get('product-form')) {
 
       const formData = new FormData(this.form);
 
-      console.log(this.form)
       if (this.cart) {
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
@@ -35,6 +34,7 @@ if (!customElements.get('product-form')) {
       }
       config.body = formData;
 
+      console.log(config.body)
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
         .then((response) => {
