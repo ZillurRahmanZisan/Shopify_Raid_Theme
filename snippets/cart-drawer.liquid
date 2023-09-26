@@ -66,6 +66,24 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
+                      {% if item.product.tags contains 'product:free-gift' %}
+                        {% assign freeGiftProduct = false %}
+                        {% for freeGift in cart.items %}
+                          {% if freeGift.product.tags contains 'free-gift-product' %}
+                            {% assign freeGiftProduct = true %}
+                          {% endif %}
+                        {% endfor %}
+                        {% unless freeGiftProduct %}
+                          {% assign freeGiftProduct = all_products['free-gift-product'] %}
+                          {% if freeGiftProduct %}
+                            <script>
+                              var itemToAdd = {{ freeGiftProduct | json }};
+                              var quantityToAdd = 1;
+                              Shopify.addItem(itemToAdd, quantityToAdd);
+                            </script>
+                          {% endif %}
+                        {% endunless %}
+                      {% endif %}
                       <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
                           {% if item.image %}
