@@ -605,17 +605,21 @@
                   {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                     <input
                       type="hidden"
-                      name="id"
+                      name="items[0][id]"
                       value="{{ product.selected_or_first_available_variant.id }}"
                       disabled
                     >
+                    <input type="hidden" name="items[0][quantity]" value="1">
+<!-- <input type="hidden" name="items[0][id]" value="ID_OF_YOUR_FIRST_PRODUCT_VARIANT"> -->
                     {% if product.tags contains 'product:free-gift' %}
-                    <input
+<input type="hidden" name="items[1][quantity]" value="1">
+<input type="hidden" name="items[1][id]" value="44323585360192">
+                    <!-- <input
                       type="hidden"
                       name="freeGift"
                       value= "44323585360192"
                       disabled
-                    >
+                    > -->
                     {% endif %}
                     <div class="product-form__buttons">
                       <button
