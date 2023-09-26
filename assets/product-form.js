@@ -76,33 +76,33 @@ if (!customElements.get('product-form')) {
         });
 
       
-      if(this.form.querySelector('[name=freeGift]')){
-        this.form.querySelector('[name=freeGift]').disabled = false;
+    //   if(this.form.querySelector('[name=freeGift]')){
+    //     this.form.querySelector('[name=freeGift]').disabled = false;
 
-        console.log("FreeGift")
-        let cartData = {
-       'items': [
-         {
-        'id': this.form.querySelector('[name=freeGift]').value,
-        'quantity': 1
-        }
-       ]
-      };
+    //     console.log("FreeGift")
+    //     let cartData = {
+    //    'items': [
+    //      {
+    //     'id': this.form.querySelector('[name=freeGift]').value,
+    //     'quantity': 1
+    //     }
+    //    ]
+    //   };
         
-      fetch(window.Shopify.routes.root + 'cart/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cartData)
-      })
-      .then(response => {
-        return response.json();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-    }
+    //   fetch(window.Shopify.routes.root + 'cart/add', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(cartData)
+    //   })
+    //   .then(response => {
+    //     return response.json();
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
+    // }
     }
 
     handleErrorMessage(errorMessage = false) {
