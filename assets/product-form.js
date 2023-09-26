@@ -87,7 +87,7 @@ if (!customElements.get('product-form')) {
        ]
       };
         
-      fetch(window.Shopify.routes.root + 'cart/add.js', {
+      fetch(window.Shopify.routes.root + 'cart/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
