@@ -80,7 +80,7 @@ if (!customElements.get('product-form')) {
             return;
           }
 
-          fetch(`${routes.cart_add_url}`', {
+          fetch(`${routes.cart_add_url}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
