@@ -30,6 +30,7 @@ class CartItems extends HTMLElement {
 
   onChange(event) {
     this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
+    this.updateQuantity(event.target.dataset.giftIndex, event.target.value, document.activeElement.getAttribute('name'));
   }
 
   getSectionsToRender() {
