@@ -610,6 +610,9 @@
                       disabled
                     >
                     {% if product.tags contains 'product:free-gift' %}
+                      <script>
+                        console.log({{product.metafields.custom.gift_product.value}},"sdasdfdasfsdfsfsddfdsfd")
+                      </script>
                       {% for giftProduct in product.metafields.custom.gift_product.value %}
                       <script>
                         console.log({{giftProduct}},"sdasd")
