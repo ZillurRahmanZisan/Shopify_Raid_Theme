@@ -80,19 +80,19 @@ if (!customElements.get('product-form')) {
             return;
           }
 
-          fetch(`${routes.cart_add_url}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cartData)
-          })
-          .then(response => response.json()).then(data=>{
-            console.log(data,"sadsad")
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+          // fetch(`${routes.cart_add_url}`, {
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/json'
+          //   },
+          //   body: JSON.stringify(cartData)
+          // })
+          // .then(response => response.json()).then(data=>{
+          //   console.log(data,"sadsad")
+          // })
+          // .catch((error) => {
+          //   console.error('Error:', error);
+          // });
 
           this.error = false;
           const quickAddModal = this.closest('quick-add-modal');
