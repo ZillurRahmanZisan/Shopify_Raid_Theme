@@ -12,7 +12,7 @@
     visibility: hidden;
   }
 </style>
-{%- assign isGift = false -%}
+
 {% for item in cart.items %}
   {% for tag in item.product.tags %}
     {% if tag == 'product:free-gift' %}
@@ -251,8 +251,6 @@
                         </td>
                       </tr>
 
-                      {% if isGift %}
-                        {% endif %}
                     {%- endfor -%}
                   </tbody>
                 </table>
