@@ -610,7 +610,7 @@
                       disabled
                     >
                     {% if product.tags contains 'product:free-gift' %}
-                      {% assign giftProduct = product.metafields.custom.gift_product.value | json %}
+                      {% assign giftProduct = product.metafields.custom.gift_product.value.id %}
                       <script>
                         console.log({{giftProduct}},"sdasdfdasfsdfsfsddfdsfd")
                       </script>
