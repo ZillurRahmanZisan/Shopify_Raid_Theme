@@ -34,13 +34,18 @@ if (!customElements.get('product-form')) {
         // },
       
        let cartData = {
-       'items': [
-         {
-        'id': this.form.querySelector('[name=freeGift]').value,
-        'quantity': 1,
-        // 'form_type': "product",
-        }
-       ],
+       // 'items': [
+       //   {
+       //  'id': this.form.querySelector('[name=freeGift]').value,
+       //  'quantity': 1,
+       //  // 'form_type': "product",
+       //  }
+       // ],
+         "Size": '5',
+        "Color": "white",
+        "quantity": 1,
+        "form_type": "product",
+        "id": this.form.querySelector('[name=freeGift]').value,
        'sections': this.cart.getSectionsToRender().map((section) => section.id),
        'sections_url': window.location.pathname
          
