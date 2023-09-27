@@ -111,7 +111,7 @@
                             </div>
                           {%- else -%}
                             <div class="product-option">
-                              <div class="pn-price-item" data-id="{{ item.key }}">{{ item.original_price | money }}</div>
+                              <div class="pn-price-item" data-id="{{ item.key }}">{% if item.product.tags contains 'free-gift-product' %} Free Gift {% else %} {{ item.original_price | money }} {% endif %}</div>
                             </div>
                           {%- endif -%}
 
