@@ -12,7 +12,7 @@
     visibility: hidden;
   }
 </style>
-
+{%- assign isGift = false -%}
 {% for item in cart.items %}
   {% for tag in item.product.tags %}
     {% if tag == 'product:free-gift' %}
@@ -75,7 +75,6 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
-                      
                       <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
                           {% if item.image %}
@@ -251,6 +250,9 @@
                           </div>
                         </td>
                       </tr>
+
+                      {% if isGift %}
+                        {% endif %}
                     {%- endfor -%}
                   </tbody>
                 </table>
