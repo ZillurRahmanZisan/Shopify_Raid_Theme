@@ -56,11 +56,11 @@ if (!customElements.get('product-form')) {
         .then((response) => {
           console.log(response);
           fetch(`${routes.cart_add_url}`, 
-            method: 'POST',
+                {method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(cartData)
+            body: JSON.stringify(cartData)}
           ).then((res)=>res.json()).then((response)=>{
             this.cart.renderContents(response);
             
