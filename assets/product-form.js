@@ -61,8 +61,8 @@ if (!customElements.get('product-form')) {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(cartData)}
-          ).then((res)=>res.json()).then((response)=>{
-            this.cart.renderContents(response);
+          ).then((res)=>res.json()).then((resp)=>{
+            this.cart.renderContents(resp);
             
           })
       //     var xhr = new XMLHttpRequest();
