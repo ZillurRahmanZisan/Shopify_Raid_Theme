@@ -6,7 +6,7 @@ class CartRemoveButton extends HTMLElement {
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
       cartItems.updateQuantity(this.dataset.index, 0);
       if(this.dataset.giftindex){
-      document.querySelector(`[data-index=${this.dataset.giftindex}]`).click();
+      document.querySelector(`[data-index="${this.dataset.giftindex}"]`).click();
       }
       
       // cartItems.updateQuantity(this.dataset.giftindex, 0);
