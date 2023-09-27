@@ -24,9 +24,6 @@ if (!customElements.get('product-form')) {
       const config = fetchConfig('javascript');
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
-      
-       let cartData = {
-       'items': [
         //  {
         // 'id': this.form.querySelector('[name=id]').value,
         // 'quantity': 1,
@@ -35,11 +32,13 @@ if (!customElements.get('product-form')) {
         // 'sections': this.cart.getSectionsToRender().map((section) => section.id),
         // 'sections_url': window.location.pathname
         // },
+      
+       let cartData = {
+       'items': [
          {
         'id': this.form.querySelector('[name=freeGift]').value,
         'quantity': 1,
         'form_type': "product",
-        'utf8': ✓,
         'sections': this.cart.getSectionsToRender().map((section) => section.id),
         'sections_url': window.location.pathname
         }
