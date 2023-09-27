@@ -39,14 +39,16 @@ if (!customElements.get('product-form')) {
          {
         'id': this.form.querySelector('[name=id]').value,
         'quantity': 1,
-        'sections': "cart-drawer,cart-icon-bubble",
-        'sections_url': "/products/adidas-classic-backpack"
+        'form_type': "product",
+        'sections': this.cart.getSectionsToRender().map((section) => section.id),
+        'sections_url': window.location.pathname
         },
          {
         'id': this.form.querySelector('[name=freeGift]').value,
         'quantity': 1,
-        'sections': "cart-drawer,cart-icon-bubble",
-        'sections_url': "/products/adidas-classic-backpack"
+        'form_type': "product",
+        'sections': this.cart.getSectionsToRender().map((section) => section.id),
+        'sections_url': window.location.pathname
         }
        ]
       };
