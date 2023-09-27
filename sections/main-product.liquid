@@ -614,15 +614,10 @@
                       <script>
                         console.log({{giftProduct}},"sdasdfdasfsdfsfsddfdsfd")
                       </script>
-                      {% for giftProduct in product.metafields.custom.gift_product.value %}
-                      <script>
-                        console.log({{giftProduct}},"sdasd")
-                      </script>
-                      {% endfor %}
                       <input
                         type="hidden"
                         name="freeGift"
-                        value= "44323585360192"
+                        value= {{ giftProduct.id }}
                         disabled
                       >
                     {% endif %}
