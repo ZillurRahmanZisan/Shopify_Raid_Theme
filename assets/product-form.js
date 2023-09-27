@@ -41,8 +41,8 @@ if (!customElements.get('product-form')) {
         // 'form_type': "product",
         }
        ],
-         'sections': this.cart.getSectionsToRender().map((section) => section.id),
-        'sections_url': window.location.pathname
+       'sections': this.cart.getSectionsToRender().map((section) => section.id),
+       'sections_url': window.location.pathname
          
       };
 
