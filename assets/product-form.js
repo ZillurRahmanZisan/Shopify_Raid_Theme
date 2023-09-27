@@ -44,7 +44,7 @@ if (!customElements.get('product-form')) {
       if (this.cart) {        
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
-        formData.append('items', cartData.items);
+        formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
         // formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
