@@ -30,7 +30,6 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
-    cosnole.log(event.target.dataset.giftIndex)
     this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
     this.updateQuantity(event.target.dataset.giftindex, event.target.value, document.activeElement.getAttribute('name'));
   }
