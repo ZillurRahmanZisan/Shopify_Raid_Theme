@@ -87,15 +87,9 @@ if (!customElements.get('product-form')) {
             window.location = window.routes.cart_url;
             return;
           }
+          config.body = cartData;
 
-          fetch(`${routes.cart_add_url}`, {
-            method: 'POST',
-            headers: {
-              "Accept": "application/javascript",
-              'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: JSON.stringify(cartData)
-          })
+          fetch(`${routes.cart_add_url}`, config)
           .then(response => response.json()).then(data=>{
             console.log(data,"sadsad")
           })
