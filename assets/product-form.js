@@ -56,18 +56,18 @@ if (!customElements.get('product-form')) {
       };
       
 
-      // const formData = new FormData(this.form);
+      const formData = new FormData(this.form);
 
       if (this.cart) {        
-        // formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
-        // formData.append('sections_url', window.location.pathname);
+        formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
+        formData.append('sections_url', window.location.pathname);
         // formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
         // formData.append('id', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
       }
       
-      config.body = JSON.stringify(formData);
+      config.body = formData;
       // config.body = JSON.stringify(Object.fromEntries(formData)); 
 
       fetch(`${routes.cart_add_url}`, config)
