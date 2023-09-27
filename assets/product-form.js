@@ -24,15 +24,6 @@ if (!customElements.get('product-form')) {
       const config = fetchConfig('javascript');
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
-
-// Size: OS
-// Color: black
-// quantity: 1
-// form_type: product
-// utf8: ✓
-// id: 44323595845952
-// product-id: 8115512803648
-
       
        let cartData = {
        'items': [
@@ -90,7 +81,7 @@ if (!customElements.get('product-form')) {
             return;
           }
 
-          fetch(window.Shopify.routes.root + 'cart/add', {
+          fetch(`${routes.cart_add_url}`', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -127,22 +118,7 @@ if (!customElements.get('product-form')) {
           this.querySelector('.loading-overlay__spinner').classList.add('hidden');
         });
 
-      
-    //   if(this.form.querySelector('[name=freeGift]')){
-    //     this.form.querySelector('[name=freeGift]').disabled = false;
-
-    //     console.log("FreeGift")
-      //   let cartData = {
-      //  'items': [
-      //    {
-      //   'id': this.form.querySelector('[name=freeGift]').value,
-      //   'quantity': 1
-      //   }
-      //  ]
-      // };
-        
-      
-    // }
+    
     }
 
     handleErrorMessage(errorMessage = false) {
