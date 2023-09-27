@@ -98,27 +98,32 @@ if (!customElements.get('product-form')) {
             return;
           }
 
+          this.error = false;
+          const quickAddModal = this.closest('quick-add-modal');
+
           if(this.form.querySelector('[name=freeGift]')){
              formData.append('id', this.form.querySelector('[name=freeGift]').value);
-
+            config.body = formData;
+            
+              fetch(`${routes.cart_add_url}`, config)
+            .then(response => response.json())
+            .then(data=>{
+              console.log(data,"sadsad");
+               this.sectionRender(data)
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+          }else{
+            this.sectionRender(response)
           }
 
           
           
-          config.body = formData;
 
-          fetch(`${routes.cart_add_url}`, config)
-          .then(response => response.json())
-          .then(data=>{
-            console.log(data,"sadsad");
-             
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+          
 
-          this.error = false;
-          const quickAddModal = this.closest('quick-add-modal');
+          
         })
         .catch((e) => {
           console.error(e);
