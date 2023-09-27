@@ -61,7 +61,6 @@ if (!customElements.get('product-form')) {
         formData.append('sections_url', window.location.pathname);
         // formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
-        // formData.append('id', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
       }
       
@@ -87,7 +86,11 @@ if (!customElements.get('product-form')) {
             window.location = window.routes.cart_url;
             return;
           }
-          config.body = JSON.stringify(cartData);
+
+         formData.append('id', this.form.querySelector('[name=freeGift]').value);
+          
+          
+          config.body = formData;
 
           fetch(`${routes.cart_add_url}`, config)
           .then(response => response.json()).then(data=>{
