@@ -11,7 +11,7 @@ if (!customElements.get('product-form')) {
       if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
     }
 
-    sectionRender(data){
+    sectionRender(data,quickAddModal){
       if (quickAddModal) {
         document.body.addEventListener('modalClosed', () => {
           setTimeout(() => { this.cart.renderContents(data) });
@@ -109,21 +109,15 @@ if (!customElements.get('product-form')) {
             .then(response => response.json())
             .then(data=>{
               console.log(data,"sadsad");
-               this.sectionRender(data)
+               this.sectionRender(data,quickAddModal)
             })
             .catch((error) => {
               console.error('Error:', error);
             });
           }else{
-            this.sectionRender(response)
+            this.sectionRender(response,quickAddModal)
           }
 
-          
-          
-
-          
-
-          
         })
         .catch((e) => {
           console.error(e);
