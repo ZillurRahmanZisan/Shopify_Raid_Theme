@@ -57,12 +57,11 @@ if (!customElements.get('product-form')) {
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
-          var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/cart/add.js", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      var params = "quantity=" + 1 + "&id=" + this.form.querySelector('[name=freeGift]').value;
-      xhr.send(params);
-          this.cart.renderContents(response);
+      //     var xhr = new XMLHttpRequest();
+      // xhr.open("POST", "/cart/add.js", true);
+      // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      // var params = "quantity=" + 1 + "&id=" + this.form.querySelector('[name=freeGift]').value;
+      // xhr.send(params);
           if (response.status) { 
             
             this.handleErrorMessage(response.description);
