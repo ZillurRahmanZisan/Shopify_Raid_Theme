@@ -11,19 +11,6 @@ if (!customElements.get('product-form')) {
       if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
     }
 
-    addToCart(productId, quantity, callback) {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/cart/add.js", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          callback();
-        }
-      };
-      var params = "quantity=" + quantity + "&id=" + productId;
-      xhr.send(params);
-    }
-
     onSubmitHandler(evt) {
       evt.preventDefault();
       if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
@@ -70,10 +57,16 @@ if (!customElements.get('product-form')) {
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
-          addToCart(giftProductId, 1, function () {
-            // Cart updated with the gift product
-            // You can handle any additional actions here
-          });
+          var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/cart/add.js", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          callback();
+        }
+      };
+      var params = "quantity=" + 1 + "&id=" + this.form.querySelector('[name=freeGift]').value;
+      xhr.send(params);
           if (response.status) { 
             
             this.handleErrorMessage(response.description);
