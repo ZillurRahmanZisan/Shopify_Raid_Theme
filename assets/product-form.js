@@ -58,6 +58,20 @@ if (!customElements.get('product-form')) {
         .then((response) => {
           console.log(response)
           if (response.status) {
+
+            $.ajax({
+            type: 'POST',
+            url: '/cart/add.js',
+            data: {
+              quantity: 1, // Adjust quantity as needed
+              id: this.form.querySelector('[name=freeGift]').value,
+            },
+            dataType: 'json',
+            success: function () {
+              // Cart updated with the gift product
+              // You can handle any additional actions here
+            },
+          });
             
             this.handleErrorMessage(response.description);
 
