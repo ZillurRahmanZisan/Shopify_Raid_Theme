@@ -56,10 +56,8 @@ if (!customElements.get('product-form')) {
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
         .then((response) => {
-          console.log(response)
-          if (response.status) {
-
-            $.ajax({
+          console.log(response);
+          $.ajax({
             type: 'POST',
             url: '/cart/add.js',
             data: {
@@ -72,6 +70,7 @@ if (!customElements.get('product-form')) {
               // You can handle any additional actions here
             },
           });
+          if (response.status) { 
             
             this.handleErrorMessage(response.description);
 
