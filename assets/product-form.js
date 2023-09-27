@@ -39,16 +39,16 @@ if (!customElements.get('product-form')) {
          {
         'id': this.form.querySelector('[name=id]').value,
         'quantity': 1,
-        'form_type': "product",
-        'utf8': "✓",
+        'form_type': product,
+        'utf8': ✓,
         'sections': this.cart.getSectionsToRender().map((section) => section.id),
         'sections_url': window.location.pathname
         },
          {
         'id': this.form.querySelector('[name=freeGift]').value,
         'quantity': 1,
-        'form_type': "product",
-        'utf8': "✓",
+        'form_type': product,
+        'utf8': ✓,
         'sections': this.cart.getSectionsToRender().map((section) => section.id),
         'sections_url': window.location.pathname
         }
