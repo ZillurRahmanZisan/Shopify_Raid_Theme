@@ -75,10 +75,10 @@ if (!customElements.get('product-form')) {
           const quickAddModal = this.closest('quick-add-modal');
 
           if(this.form.querySelector('[name=freeGift]')){
-             formData.append('id', this.form.querySelector('[name=freeGift]').value);
+             formData.set('id', this.form.querySelector('[name=freeGift]').value);
             config.body = formData;
             
-              fetch(`${routes.cart_add_url}`, config)
+            fetch(`${routes.cart_add_url}`, config)
             .then(response => response.json())
             .then(data=>{
               console.log(data,"sadsad");
