@@ -25,18 +25,18 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
-       let cartData = {
-       'items': [
-         {
-        'id': this.form.querySelector('[name=id]').value,
-        'quantity': 1
-        },
-         {
-        'id': this.form.querySelector('[name=freeGift]').value,
-        'quantity': 1
-        }
-       ]
-      };
+      //  let cartData = {
+      //  'items': [
+      //    {
+      //   'id': this.form.querySelector('[name=id]').value,
+      //   'quantity': 1
+      //   },
+      //    {
+      //   'id': this.form.querySelector('[name=freeGift]').value,
+      //   'quantity': 1
+      //   }
+      //  ]
+      // };
       
 
       const formData = new FormData(this.form);
@@ -44,7 +44,7 @@ if (!customElements.get('product-form')) {
       if (this.cart) {        
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
-        formData.append('items', JSON.stringify(cartData.items));
+        // formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
         // formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
