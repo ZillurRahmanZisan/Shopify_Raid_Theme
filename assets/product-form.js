@@ -93,8 +93,17 @@ if (!customElements.get('product-form')) {
           config.body = formData;
 
           fetch(`${routes.cart_add_url}`, config)
-          .then(response => response.json()).then(data=>{
-            console.log(data,"sadsad")
+          .then(response => response.json())
+          .then(data=>{
+            console.log(data,"sadsad");
+             if (quickAddModal) {
+                document.body.addEventListener('modalClosed', () => {
+                  setTimeout(() => { this.cart.renderContents(response) });
+                }, { once: true });
+                quickAddModal.hide(true);
+              } else {
+                this.cart.renderContents(response);
+              }
           })
           .catch((error) => {
             console.error('Error:', error);
@@ -102,14 +111,6 @@ if (!customElements.get('product-form')) {
 
           this.error = false;
           const quickAddModal = this.closest('quick-add-modal');
-          // if (quickAddModal) {
-          //   document.body.addEventListener('modalClosed', () => {
-          //     setTimeout(() => { this.cart.renderContents(response) });
-          //   }, { once: true });
-          //   quickAddModal.hide(true);
-          // } else {
-          //   this.cart.renderContents(response);
-          // }
         })
         .catch((e) => {
           console.error(e);
