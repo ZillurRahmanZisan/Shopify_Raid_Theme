@@ -11,7 +11,7 @@ if (!customElements.get('product-form')) {
       if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
     }
 
-    function addToCart(productId, quantity, callback) {
+    addToCart(productId, quantity, callback) {
       var xhr = new XMLHttpRequest();
       xhr.open("POST", "/cart/add.js", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
