@@ -47,6 +47,8 @@ if (!customElements.get('product-form')) {
         // formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
         // formData.append('id', this.form.querySelector('[name=freeGift]').value);
+        formData.append("id", this.form.querySelector('[name=freeGift]').value);
+        formData.append("quantity", 1);
         this.cart.setActiveElement(document.activeElement);
       }
       
