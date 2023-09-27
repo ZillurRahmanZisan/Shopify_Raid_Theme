@@ -612,7 +612,7 @@
                     {% if product.tags contains 'product:free-gift' %}
                     {% assign giftProduct = product.metafields.custom.gift_product.value %} 
                       <script>
-                        console.log({{product.product.metafields.custom.gift_product.value}},"sdasd")
+                        console.log({{product.product.metafields.custom.gift_product}},"sdasd")
                       </script>
                     <input
                       type="hidden"
