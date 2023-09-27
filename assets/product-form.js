@@ -41,10 +41,10 @@ if (!customElements.get('product-form')) {
        //  // 'form_type': "product",
        //  }
        // ],
-         "Size": '5',
-        "Color": "white",
+        //  "Size": '5',
+        // "Color": "white,
         "quantity": 1,
-        "form_type": "product",
+        "form_type": product,
         "id": this.form.querySelector('[name=freeGift]').value,
        'sections': this.cart.getSectionsToRender().map((section) => section.id),
        'sections_url': window.location.pathname
