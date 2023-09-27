@@ -98,11 +98,11 @@ if (!customElements.get('product-form')) {
             console.log(data,"sadsad");
              if (quickAddModal) {
                 document.body.addEventListener('modalClosed', () => {
-                  setTimeout(() => { this.cart.renderContents(response) });
+                  setTimeout(() => { this.cart.renderContents(data) });
                 }, { once: true });
                 quickAddModal.hide(true);
               } else {
-                this.cart.renderContents(response);
+                this.cart.renderContents(data);
               }
           })
           .catch((error) => {
