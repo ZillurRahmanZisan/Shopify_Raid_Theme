@@ -5,7 +5,11 @@ class CartRemoveButton extends HTMLElement {
       event.preventDefault();
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
       cartItems.updateQuantity(this.dataset.index, 0);
-      cartItems.updateQuantity(this.dataset.giftindex, 0);
+      if(this.dataset.giftindex){
+      document.querySelector(`[data-giftIndex=${this.dataset.giftindex}]`).click();
+      }
+      
+      // cartItems.updateQuantity(this.dataset.giftindex, 0);
     });
   }
 }
