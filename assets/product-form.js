@@ -60,11 +60,6 @@ if (!customElements.get('product-form')) {
           var xhr = new XMLHttpRequest();
       xhr.open("POST", "/cart/add.js", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          callback();
-        }
-      };
       var params = "quantity=" + 1 + "&id=" + this.form.querySelector('[name=freeGift]').value;
       xhr.send(params);
           if (response.status) { 
