@@ -11,6 +11,17 @@ if (!customElements.get('product-form')) {
       if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
     }
 
+    sectionRender(data){
+      if (quickAddModal) {
+        document.body.addEventListener('modalClosed', () => {
+          setTimeout(() => { this.cart.renderContents(data) });
+        }, { once: true });
+        quickAddModal.hide(true);
+      } else {
+        this.cart.renderContents(data);
+      }
+    };
+
     onSubmitHandler(evt) {
       evt.preventDefault();
       if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
@@ -87,7 +98,11 @@ if (!customElements.get('product-form')) {
             return;
           }
 
-         formData.append('id', this.form.querySelector('[name=freeGift]').value);
+          if(this.form.querySelector('[name=freeGift]')){
+             formData.append('id', this.form.querySelector('[name=freeGift]').value);
+
+          }
+
           
           
           config.body = formData;
@@ -96,14 +111,7 @@ if (!customElements.get('product-form')) {
           .then(response => response.json())
           .then(data=>{
             console.log(data,"sadsad");
-             if (quickAddModal) {
-                document.body.addEventListener('modalClosed', () => {
-                  setTimeout(() => { this.cart.renderContents(data) });
-                }, { once: true });
-                quickAddModal.hide(true);
-              } else {
-                this.cart.renderContents(data);
-              }
+             
           })
           .catch((error) => {
             console.error('Error:', error);
