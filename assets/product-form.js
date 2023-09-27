@@ -87,8 +87,7 @@ if (!customElements.get('product-form')) {
             },
             body: JSON.stringify(cartData)
           })
-          .then(response => response.json())
-            .then(data=>{
+          .then(response => response.json()).then(data=>{
             console.log(data,"sadsad")
           })
           .catch((error) => {
