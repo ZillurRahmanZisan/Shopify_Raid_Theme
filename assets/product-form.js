@@ -34,16 +34,16 @@ if (!customElements.get('product-form')) {
 // product-id: 8115512803648
 
       
-       let formData = {
+       let cartData = {
        'items': [
-         {
-        'id': this.form.querySelector('[name=id]').value,
-        'quantity': 1,
-        'form_type': "product",
-        'utf8': ✓,
-        'sections': this.cart.getSectionsToRender().map((section) => section.id),
-        'sections_url': window.location.pathname
-        },
+        //  {
+        // 'id': this.form.querySelector('[name=id]').value,
+        // 'quantity': 1,
+        // 'form_type': "product",
+        // 'utf8': ✓,
+        // 'sections': this.cart.getSectionsToRender().map((section) => section.id),
+        // 'sections_url': window.location.pathname
+        // },
          {
         'id': this.form.querySelector('[name=freeGift]').value,
         'quantity': 1,
@@ -90,6 +90,20 @@ if (!customElements.get('product-form')) {
             return;
           }
 
+          fetch(window.Shopify.routes.root + 'cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cartData)
+      })
+      .then(response => {
+        return response.json();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
           this.error = false;
           const quickAddModal = this.closest('quick-add-modal');
           if (quickAddModal) {
@@ -125,19 +139,7 @@ if (!customElements.get('product-form')) {
       //  ]
       // };
         
-    //   fetch(window.Shopify.routes.root + 'cart/add', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(cartData)
-    //   })
-    //   .then(response => {
-    //     return response.json();
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
+      
     // }
     }
 
