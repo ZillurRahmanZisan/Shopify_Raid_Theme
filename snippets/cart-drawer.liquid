@@ -209,7 +209,7 @@
 
 
                         
-                        <td class="cart-item__quantity {% unless item.product.tags contains 'free-gift-product' %} hidden {% endunless %}" role="cell" headers="CartDrawer-ColumnQuantity">
+                        <td class="cart-item__quantity {% if item.product.tags contains 'free-gift-product' %} hidden {% endif %}" role="cell" headers="CartDrawer-ColumnQuantity">
                           <div class="cart-item__quantity-wrapper">
                             <quantity-input class="quantity">
                               <button class="quantity__button no-js-hidden" name="minus" type="button">
