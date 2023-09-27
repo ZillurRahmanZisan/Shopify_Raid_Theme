@@ -6,7 +6,7 @@ class CartRemoveButton extends HTMLElement {
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
       cartItems.updateQuantity(this.dataset.index, 0);
       console.log(this.dataset)
-      cartItems.updateQuantity(this.dataset.giftIndex, 0);
+      cartItems.updateQuantity(this.dataset.giftindex, 0);
     });
   }
 }
@@ -32,7 +32,7 @@ class CartItems extends HTMLElement {
   onChange(event) {
     cosnole.log(event.target.dataset.giftIndex)
     this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
-    this.updateQuantity(event.target.dataset.giftIndex, event.target.value, document.activeElement.getAttribute('name'));
+    this.updateQuantity(event.target.dataset.giftindex, event.target.value, document.activeElement.getAttribute('name'));
   }
 
   getSectionsToRender() {
