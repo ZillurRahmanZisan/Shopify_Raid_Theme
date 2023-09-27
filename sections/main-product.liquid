@@ -610,6 +610,7 @@
                       disabled
                     >
                     {% if product.tags contains 'product:free-gift' %}
+                    {% assign giftProduct = product.metafields.custom.gift_product.value %} 
                     <input
                       type="hidden"
                       name="freeGift"
