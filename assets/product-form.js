@@ -25,17 +25,26 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
-      const formData = new FormData(this.form);
+      const finalData =[];
+
+      const formData1 = new FormData(this.form);
+      const formData2 = new FormData(this.form);
 
       if (this.cart) {
-        formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
-        formData.append('sections_url', window.location.pathname);
+        formData1.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
+        formData1.append('sections_url', window.location.pathname);
+        formData2.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
+        formData2.append('sections_url', window.location.pathname);
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
-        formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
+        formData2.append('id', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
       }
+
+      finalData.push(formData1);
+      finalData.push(formData2);
       
-      config.body = formData;
+      // config.body = formData;
+      config.body = finalData;
 
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
