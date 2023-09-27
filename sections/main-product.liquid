@@ -610,7 +610,7 @@
                       disabled
                     >
                     {% if product.tags contains 'product:free-gift' %}
-                      {% for giftProduct in product.product.metafields.custom.gift_product.value %}
+                      {% for giftProduct in product.metafields.custom.gift_product.value %}
                       <script>
                         console.log({{giftProduct}},"sdasd")
                       </script>
