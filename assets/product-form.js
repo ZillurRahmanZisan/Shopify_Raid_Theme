@@ -70,18 +70,9 @@ if (!customElements.get('product-form')) {
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
-          $.ajax({
-            type: 'POST',
-            url: '/cart/add.js',
-            data: {
-              quantity: 1, // Adjust quantity as needed
-              id: this.form.querySelector('[name=freeGift]').value,
-            },
-            dataType: 'json',
-            success: function () {
-              // Cart updated with the gift product
-              // You can handle any additional actions here
-            },
+          addToCart(giftProductId, 1, function () {
+            // Cart updated with the gift product
+            // You can handle any additional actions here
           });
           if (response.status) { 
             
