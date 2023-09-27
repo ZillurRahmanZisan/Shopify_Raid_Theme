@@ -25,18 +25,14 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
-      //  let cartData = {
-      //  'items': [
-      //    {
-      //   'id': this.form.querySelector('[name=id]').value,
-      //   'quantity': 1
-      //   },
-      //    {
-      //   'id': this.form.querySelector('[name=freeGift]').value,
-      //   'quantity': 1
-      //   }
-      //  ]
-      // };
+       let cartData = {
+       'items': [
+         {
+        'id': this.form.querySelector('[name=freeGift]').value,
+        'quantity': 1
+        }
+       ]
+      };
       
 
       const formData = new FormData(this.form);
@@ -59,6 +55,16 @@ if (!customElements.get('product-form')) {
         .then((response) => response.json())
         .then((response) => {
           console.log(response);
+          fetch(`${routes.cart_add_url}`, 
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cartData)
+          ).then((res)=>res.json()).then((response)=>{
+            this.cart.renderContents(response);
+            
+          })
       //     var xhr = new XMLHttpRequest();
       // xhr.open("POST", "/cart/add.js", true);
       // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
