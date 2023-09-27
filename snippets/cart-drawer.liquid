@@ -13,14 +13,6 @@
   }
 </style>
 
-{% for item in cart.items %}
-  {% for tag in item.product.tags %}
-    {% if tag == 'product:free-gift' %}
-      {%- assign isGift = true -%}
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
   <div id="CartDrawer" class="cart-drawer">
