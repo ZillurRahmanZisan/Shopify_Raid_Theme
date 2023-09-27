@@ -25,24 +25,33 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
+       let cartData = {
+       'items': [
+         {
+        'id': this.form.querySelector('[name=id]').value,
+        'quantity': 1
+        },
+         {
+        'id': this.form.querySelector('[name=freeGift]').value,
+        'quantity': 1
+        }
+       ]
+      };
+      
+
       const formData = new FormData(this.form);
 
-      if (this.cart) {
-        // Append the ID of the first product
-        formData.append('id[0]', this.form.querySelector('[name=id]').value);
-      
-        // Append the ID of the second product (you can replace 'secondProductId' with the actual source of the second product's ID)
-        formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
-        
+      if (this.cart) {        
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
+        formData.append('items', cartData.items);
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
         // formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
       }
       
-      // config.body = formData;
-      config.body = JSON.stringify(Object.fromEntries(formData)); 
+      config.body = formData;
+      // config.body = JSON.stringify(Object.fromEntries(formData)); 
 
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
@@ -88,14 +97,14 @@ if (!customElements.get('product-form')) {
     //     this.form.querySelector('[name=freeGift]').disabled = false;
 
     //     console.log("FreeGift")
-    //     let cartData = {
-    //    'items': [
-    //      {
-    //     'id': this.form.querySelector('[name=freeGift]').value,
-    //     'quantity': 1
-    //     }
-    //    ]
-    //   };
+      //   let cartData = {
+      //  'items': [
+      //    {
+      //   'id': this.form.querySelector('[name=freeGift]').value,
+      //   'quantity': 1
+      //   }
+      //  ]
+      // };
         
     //   fetch(window.Shopify.routes.root + 'cart/add', {
     //     method: 'POST',
