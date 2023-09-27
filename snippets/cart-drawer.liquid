@@ -67,6 +67,11 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
+                      {% for tag in item.product.tags %}
+                        {% if tag == 'product:free-gift' %}
+                          {%- assign isGift = true -%}
+                        {% endif %}
+                      {% endfor %}
                       <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
                           {% if item.image %}
@@ -226,7 +231,7 @@
                               </button>
                             </quantity-input>
 
-                            <cart-remove-button id="CartDrawer-Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                            <cart-remove-button id="CartDrawer-Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}" data-gift-index="{{ item.index | plus: 2 }}">
                               <button type="button" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                                 {% render 'icon-remove' %}
                               </button>
