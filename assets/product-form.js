@@ -42,7 +42,7 @@ if (!customElements.get('product-form')) {
       }
       
       // config.body = formData;
-      config.body = JSON.stringify(Object.fromEntries(formData.entries())); 
+      config.body = JSON.stringify(Object.fromEntries(formData)); 
 
       fetch(`${routes.cart_add_url}`, config)
         .then((response) => response.json())
