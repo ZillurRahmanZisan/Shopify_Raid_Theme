@@ -25,32 +25,45 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
-      //  let formData = {
-      //  'items': [
-      //    {
-      //   'id': this.form.querySelector('[name=id]').value,
-      //   'quantity': 1
-      //   },
-      //    {
-      //   'id': this.form.querySelector('[name=freeGift]').value,
-      //   'quantity': 1
-      //   }
-      //  ]
-      // };
+// Size: OS
+// Color: black
+// quantity: 1
+// form_type: product
+// utf8: ✓
+// id: 44323595845952
+// product-id: 8115512803648
+
+      
+       let formData = {
+       'items': [
+         {
+        'id': this.form.querySelector('[name=id]').value,
+        'quantity': 1,
+        'sections': cart-drawer,cart-icon-bubble,
+        'sections_url': /products/adidas-classic-backpack
+        },
+         {
+        'id': this.form.querySelector('[name=freeGift]').value,
+        'quantity': 1,
+        'sections': cart-drawer,cart-icon-bubble,
+        'sections_url': /products/adidas-classic-backpack
+        }
+       ]
+      };
       
 
-      const formData = new FormData(this.form);
+      // const formData = new FormData(this.form);
 
       if (this.cart) {        
-        formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
-        formData.append('sections_url', window.location.pathname);
+        // formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
+        // formData.append('sections_url', window.location.pathname);
         // formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
         // formData.append('id', this.form.querySelector('[name=freeGift]').value);
         this.cart.setActiveElement(document.activeElement);
       }
       
-      config.body = formData;
+      config.body = JSON.stringify(formData);
       // config.body = JSON.stringify(Object.fromEntries(formData)); 
 
       fetch(`${routes.cart_add_url}`, config)
