@@ -46,7 +46,7 @@ if (!customElements.get('product-form')) {
         formData.append('sections_url', window.location.pathname);
         // formData.append('items', JSON.stringify(cartData.items));
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
-        // formData.append('id', this.form.querySelector('[name=freeGift]').value);
+        // formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
         // formData.append("id", this.form.querySelector('[name=freeGift]').value);
         // formData.append("quantity", 1);
         this.cart.setActiveElement(document.activeElement);
