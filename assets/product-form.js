@@ -50,7 +50,7 @@ if (!customElements.get('product-form')) {
         this.cart.setActiveElement(document.activeElement);
       }
       
-      config.body = formData;
+      config.body = JSON.stringify(formData);
       // config.body = JSON.stringify(Object.fromEntries(formData)); 
 
       fetch(`${routes.cart_add_url}`, config)
