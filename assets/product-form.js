@@ -85,6 +85,7 @@ if (!customElements.get('product-form')) {
           fetch(`${routes.cart_add_url}`, {
             method: 'POST',
             headers: {
+              "Accept": "application/javascript",
               'X-Requested-With': 'XMLHttpRequest'
             },
             body: JSON.stringify(cartData)
