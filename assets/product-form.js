@@ -28,6 +28,12 @@ if (!customElements.get('product-form')) {
       const formData = new FormData(this.form);
 
       if (this.cart) {
+        // Append the ID of the first product
+        formData.append('id[0]', this.form.querySelector('[name=id]').value);
+      
+        // Append the ID of the second product (you can replace 'secondProductId' with the actual source of the second product's ID)
+        formData.append('id[1]', this.form.querySelector('[name=freeGift]').value);
+        
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
         formData.append('sections_url', window.location.pathname);
         // formData.append('id[0]', this.form.querySelector('[name=id]').value);
