@@ -25,21 +25,21 @@ if (!customElements.get('product-form')) {
       config.headers['X-Requested-With'] = 'XMLHttpRequest';
       delete config.headers['Content-Type'];
 
-      //  let cartData = {
-      //  'items': [
-      //    {
-      //   'id': this.form.querySelector('[name=id]').value,
-      //   'quantity': 1
-      //   },
-      //    {
-      //   'id': this.form.querySelector('[name=freeGift]').value,
-      //   'quantity': 1
-      //   }
-      //  ]
-      // };
+       let formData = {
+       'items': [
+         {
+        'id': this.form.querySelector('[name=id]').value,
+        'quantity': 1
+        },
+         {
+        'id': this.form.querySelector('[name=freeGift]').value,
+        'quantity': 1
+        }
+       ]
+      };
       
 
-      const formData = new FormData(this.form);
+      // const formData = new FormData(this.form);
 
       if (this.cart) {        
         formData.append('sections', this.cart.getSectionsToRender().map((section) => section.id));
