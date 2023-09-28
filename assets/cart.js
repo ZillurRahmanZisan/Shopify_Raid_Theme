@@ -33,10 +33,10 @@ class CartItems extends HTMLElement {
     this.addEventListener('change', this.debouncedOnChange.bind(this));
   }
 
-  // onChange(event) {
-  //   this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
-  //   this.updateQuantity(event.target.dataset.giftindex, event.target.value, document.activeElement.getAttribute('name'));
-  // }
+  onChange(event) {
+    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
+    this.updateQuantity(event.target.dataset.giftindex, event.target.value, document.activeElement.getAttribute('name'));
+  }
 
   getSectionsToRender() {
     return [
