@@ -5,11 +5,11 @@ class CartRemoveButton extends HTMLElement {
       event.preventDefault();
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
       cartItems.updateQuantity(this.dataset.index, 0);
-      // if(this.dataset.giftindex){
-      //   cartItems.updateQuantity(this.dataset.giftindex, 0);
-      //   // console.log(document.querySelector(`#CartDrawer-Remove-${this.dataset.giftindex}[data-index="${this.dataset.giftindex}"]`))
-      //   // document.querySelector(`#CartDrawer-Remove-${this.dataset.giftindex}[data-index="${this.dataset.giftindex}"]`).click();
-      // }
+      if(this.dataset.giftindex){
+        cartItems.updateQuantity(this.dataset.giftindex, 0);
+        // console.log(document.querySelector(`#CartDrawer-Remove-${this.dataset.giftindex}[data-index="${this.dataset.giftindex}"]`))
+        // document.querySelector(`#CartDrawer-Remove-${this.dataset.giftindex}[data-index="${this.dataset.giftindex}"]`).click();
+      }
       
     });
   }
@@ -66,14 +66,12 @@ class CartItems extends HTMLElement {
   updateQuantity(line, quantity, name) {
     this.enableLoading(line);
 
-    const body = JSON.stringify([
-      {
+    const body = JSON.stringify({
       line,
       quantity,
       sections: this.getSectionsToRender().map((section) => section.section),
       sections_url: window.location.pathname
-    }
-    ]);
+    });
 
     fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
       .then((response) => {
