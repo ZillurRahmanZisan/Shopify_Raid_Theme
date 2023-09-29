@@ -63,8 +63,8 @@ class CartItems extends HTMLElement {
     ];
   }
 
-  updateQuantity(this, quantity, name) {
-    var line = this.dataset.index;
+  updateQuantity(elm, quantity, name) {
+    var line = elm.dataset.index;
     this.enableLoading(line);
 
     const body = JSON.stringify({
