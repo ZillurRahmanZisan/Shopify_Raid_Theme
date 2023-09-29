@@ -122,8 +122,6 @@ class CartItems extends HTMLElement {
             })
         
       }else{
-
-        const parsedState = JSON.parse(state);
         this.classList.toggle('is-empty', parsedState.item_count === 0);
         const cartDrawerWrapper = document.querySelector('cart-drawer');
         const cartFooter = document.getElementById('main-cart-footer');
