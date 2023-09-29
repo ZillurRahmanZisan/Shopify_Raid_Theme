@@ -62,6 +62,8 @@ class CartItems extends HTMLElement {
     var line = elm.dataset.index;
     this.enableLoading(line);
 
+    console.log(name,"Name")
+    
     const body = JSON.stringify({
       line,
       quantity,
