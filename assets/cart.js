@@ -76,6 +76,7 @@ class CartItems extends HTMLElement {
       .then((state) => {
         const parsedState = JSON.parse(state);
          if(elm.dataset.giftindex){
+           console.log(elm.dataset.giftindex)
            var line = elm.dataset.giftindex;
            var quantity = parsedState.item_count;
           this.enableLoading(line);
