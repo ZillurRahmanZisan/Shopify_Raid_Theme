@@ -4,11 +4,6 @@ class CartRemoveButton extends HTMLElement {
     this.addEventListener('click', (event) => {
       event.preventDefault();
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
-      // if(this.dataset.giftindex){
-      //   cartItems.updateQuantity(this.dataset.giftindex, 0);
-      //   // console.log(document.querySelector(`#CartDrawer-Remove-${this.dataset.giftindex}[data-index="${this.dataset.giftindex}"]`))
-      //   // document.querySelector(`#CartDrawer-Remove-${this.dataset.giftindex}[data-index="${this.dataset.giftindex}"]`).click();
-      // }
       cartItems.updateQuantity(this, 0);
       
     });
@@ -80,19 +75,53 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
-        this.classList.toggle('is-empty', parsedState.item_count === 0);
-        const cartDrawerWrapper = document.querySelector('cart-drawer');
-        const cartFooter = document.getElementById('main-cart-footer');
+         if(elm.dataset.giftindex){
+           var line = elm.dataset.giftindex;
+           var quantity = parsedState.item_count;
+          this.enableLoading(line);
+      
+          const body = JSON.stringify({
+            line,
+            quantity,
+            sections: this.getSectionsToRender().map((section) => section.section),
+            sections_url: window.location.pathname
+          });
+      
+          fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
+            .then((response) => {
+              return response.text();
+            }).then((data)=>{
+              const parsedState = JSON.parse(data);
+              this.classList.toggle('is-empty', parsedState.item_count === 0);
+              const cartDrawerWrapper = document.querySelector('cart-drawer');
+              const cartFooter = document.getElementById('main-cart-footer');
+      
+              if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
+              if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
+      
+              this.getSectionsToRender().forEach((section => {
+                const elementToReplace =
+                  document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
+                elementToReplace.innerHTML =
+                  this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+              }));
+            })
+        
+      }
+        // const parsedState = JSON.parse(state);
+        // this.classList.toggle('is-empty', parsedState.item_count === 0);
+        // const cartDrawerWrapper = document.querySelector('cart-drawer');
+        // const cartFooter = document.getElementById('main-cart-footer');
 
-        if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
-        if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
+        // if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
+        // if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
 
-        this.getSectionsToRender().forEach((section => {
-          const elementToReplace =
-            document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
-          elementToReplace.innerHTML =
-            this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
-        }));
+        // this.getSectionsToRender().forEach((section => {
+        //   const elementToReplace =
+        //     document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
+        //   elementToReplace.innerHTML =
+        //     this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+        // }));
 
         this.updateLiveRegions(line, parsedState.item_count);
         const lineItem = document.getElementById(`CartItem-${line}`) || document.getElementById(`CartDrawer-Item-${line}`);
