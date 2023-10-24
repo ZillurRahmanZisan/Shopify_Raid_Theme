@@ -48,7 +48,7 @@
   {%- endif -%}
 
   <script>
-  console.log({{ product.metafields.custom.material.value | json}})
+  console.log({{ product.metafields.custom.meterial.value | json}})
   </script>
 
   <div>
@@ -57,7 +57,7 @@
        <p>{{ collect.description.value }}</p>
   </div>
   <div>
-    {% assign material = product.metafields.custom.material.value.id %}
+    {% assign material = product.metafields.custom.meterial.value.id %}
        <p>{{ material }}</p>
   </div>
 
