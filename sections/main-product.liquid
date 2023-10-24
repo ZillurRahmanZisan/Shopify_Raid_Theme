@@ -47,8 +47,10 @@
     >
   {%- endif -%}
 
+  {% assign collect = collection.metafields.custom.product_bundle.value %}
+
   <script>
-  console.log({{ product.selected_or_first_available_variant | json}})
+  console.log({{ collect | json}})
   </script>
 
   <div>
