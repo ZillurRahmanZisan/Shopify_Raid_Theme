@@ -47,14 +47,14 @@
     >
   {%- endif -%}
 
-  {% assign collect = collection.metafields.custom.product_bundle.value %}
+  {% assign collect = product.metafields.custom.product_bundle.value %}
 
   <script>
-  console.log({{ collection.metafields.custom.product_bundle.value | json}})
+  console.log({{ product.metafields.custom.product_bundle.value | json}})
   </script>
 
   <div>
-    {% assign collect = collection.metafields.custom.product_bundle.value %}
+    {% assign collect = product.metafields.custom.product_bundle.value %}
        <p>{{ collect.heading.value }}</p>
        <p>{{ collect.description.value }}</p>
        
