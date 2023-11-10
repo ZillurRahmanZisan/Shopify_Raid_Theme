@@ -239,16 +239,13 @@
       document.documentElement.classList.add('shopify-design-mode');
     }
     </script>
-  </head>
-
-  <body class="gradient">
-
+  
 <script type="text/javascript">
  var _conv_page_type = "{{ request.page_type }}";
  var _conv_category_id = "{{ collection.id }}";
  var _conv_category_name = "{{ collection.title }}";
  var _conv_product_sku = "{{ product.selected_or_first_available_variant.sku }}";
- var _conv_product_name = "{{ product.title }}";
+ var _conv_product_name = '{{ product.title }}';
  var _conv_product_price = "{{ product.price_min | money_without_currency }}";
  var _conv_customer_id = "{{ customer.id }}";
  var _conv_custom_v1 = "{{ product.tags.first }}";
@@ -258,6 +255,9 @@
 </script>
 {% render 'convert' %}
 
+</head>
+
+  <body class="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
